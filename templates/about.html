@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}About - VisionLens AI{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-4">About This Project</h1>
+            <hr class="my-4">
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>Project Overview</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        VisionLens AI is a Flask-based web application that demonstrates 
+                        the integration of artificial intelligence with web technologies. The project 
+                        was developed as part of the RECESS Final Project 2026 for BSE2301 Software 
+                        Engineering Mini Project 2.
+                    </p>
+                    <p>
+                        The application provides a friendly interface for text intelligence and image 
+                        recognition. Users can submit text or a picture and receive a ranked prediction 
+                        with a confidence score in real time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4>Technology Stack</h4>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>Backend:</strong> Flask (Python)</li>
+                        <li><strong>AI/ML:</strong> Custom NLP models</li>
+                        <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript, Bootstrap 5</li>
+                        <li><strong>Database:</strong> SQLite</li>
+                        <li><strong>Deployment:</strong> Gunicorn, Docker-ready</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h4>Key Features</h4>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Real-time sentiment analysis</li>
+                        <li>Text classification capabilities</li>
+                        <li>Spam detection</li>
+                        <li>RESTful API endpoints</li>
+                        <li>Responsive web design</li>
+                        <li>Easy-to-use interface</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h3>Team Members - Group C</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Member 1: Project Lead & Backend Developer</h5>
+                            <p>Responsible for Flask setup, API development, and AI model integration</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Member 2: Frontend Developer</h5>
+                            <p>Responsible for UI/UX design, HTML/CSS/JavaScript implementation</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Member 3: AI/ML Specialist</h5>
+                            <p>Responsible for model development, training, and optimization</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Member 4: Database & Documentation Lead</h5>
+                            <p>Responsible for database design, documentation, and report writing</p>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 offset-md-3">
+                            <h5>Member 5: Testing & Deployment Engineer</h5>
+                            <p>Responsible for testing, quality assurance, and deployment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h3>Project Timeline</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Project Duration:</strong> July 17 - July 30, 2026 (2 weeks)</p>
+                    <ul>
+                        <li><strong>Week 1:</strong> Setup, model development, basic UI</li>
+                        <li><strong>Week 2:</strong> Integration, testing, documentation, deployment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="/" class="btn btn-primary btn-lg">Back to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

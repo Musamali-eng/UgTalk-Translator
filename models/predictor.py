@@ -18,7 +18,7 @@ class TranslationPredictor:
         self._create_translation_dictionary()
     
     def _create_translation_dictionary(self):
-        """Create comprehensive translation dictionary for all languages"""
+        """Create comprehensive translation dictionary for all languages (bi-directional)"""
         self.translations = {
             'Luganda': {
                 'thank you': 'Webale nnyo',
@@ -180,11 +180,18 @@ class TranslationPredictor:
             }
         }
         
-        # Add to exact matches
+        # Build forward matches (English phrase → Ugandan)
         self.exact_matches = {}
+        # Build reverse matches (Ugandan phrase → English)
+        self.reverse_matches = {}  # Maps Ugandan phrase.lower() -> (english_phrase, language)
+        
         for lang, phrases in self.translations.items():
             for phrase, translation in phrases.items():
+                # Forward: English phrase → Ugandan
                 self.exact_matches[(phrase.lower().strip(), lang)] = translation
+                # Reverse: Ugandan phrase → English
+                ugandan_phrase_lower = translation.lower().strip()
+                self.reverse_matches[ugandan_phrase_lower] = (phrase, lang)
     
     def extract_translation(self, text):
         """Extract actual translation from dataset format"""
@@ -277,7 +284,7 @@ class TranslationPredictor:
         return text.strip()
     
     def find_best_match(self, text, target_language):
-        """Find the best translation match"""
+        """Find the best translation match (forward: English → Ugandan)"""
         text_lower = text.lower().strip()
         
         # Check exact match
@@ -299,8 +306,47 @@ class TranslationPredictor:
         
         return best_match
     
+    def find_reverse_match(self, text):
+        """Find reverse match (Ugandan → English). Returns (english_phrase, source_language) or None"""
+        text_lower = text.lower().strip()
+        
+        # Check exact reverse match
+        if text_lower in self.reverse_matches:
+            return self.reverse_matches[text_lower]
+        
+        # Check partial reverse match
+        best_match = None
+        best_score = 0
+        
+        for ug_phrase, (en_phrase, lang) in self.reverse_matches.items():
+            if ug_phrase in text_lower or text_lower in ug_phrase:
+                score = len(ug_phrase) / max(len(text_lower), 1)
+                if score > best_score:
+                    best_score = score
+                    best_match = (en_phrase, lang)
+        
+        return best_match
+    
+    def detect_language(self, text):
+        """Detect if text is likely a Ugandan phrase or English"""
+        text_lower = text.lower().strip()
+        
+        # Ugandan phrases typically have certain characteristics
+        # Check if text matches any known Ugandan phrase
+        for ug_phrase in self.reverse_matches:
+            if ug_phrase in text_lower or text_lower in ug_phrase:
+                return 'ugandan'
+        
+        # Check if text matches any known English phrase
+        for lang, phrases in self.translations.items():
+            for en_phrase in phrases:
+                if en_phrase.lower() in text_lower or text_lower in en_phrase.lower():
+                    return 'english'
+        
+        return 'unknown'
+    
     def translate(self, text, target_language, domain=None, formality=None):
-        """Translate text to target language"""
+        """Translate text between English and Ugandan languages (bi-directional)"""
         if target_language not in self.get_languages():
             return {
                 'success': False, 
@@ -313,7 +359,7 @@ class TranslationPredictor:
         
         clean_text = self.clean_text(text)
         
-        # STEP 1: Try exact match from dictionary
+        # STEP 1: Try forward match (English → Ugandan)
         translation = self.find_best_match(clean_text, target_language)
         if translation:
             return {
@@ -327,7 +373,24 @@ class TranslationPredictor:
                 'similar_text': text
             }
         
-        # STEP 2: Try model-based translation (if available)
+        # STEP 2: Try reverse match (Ugandan phrase → English explanation)
+        # This handles case where user types a Luganda phrase and selects Luganda (meaning they want English)
+        reverse_result = self.find_reverse_match(clean_text)
+        if reverse_result:
+            en_phrase, detected_lang = reverse_result
+            return {
+                'success': True,
+                'original': text,
+                'translation': en_phrase,
+                'target_language': target_language,
+                'detected_source_language': detected_lang,
+                'domain': 'Dictionary',
+                'formality': 'Informal',
+                'confidence': 1.0,
+                'similar_text': text
+            }
+        
+        # STEP 3: Try model-based translation (if available)
         if self.is_loaded and target_language in self.language_models:
             try:
                 text_vector = self.vectorizer.transform([clean_text])
@@ -362,10 +425,26 @@ class TranslationPredictor:
             except Exception as e:
                 pass
         
-        # STEP 3: Return helpful error
+        # STEP 4: Return helpful error with suggestions
+        suggestions = []
+        for lang, phrases in self.translations.items():
+            for en_phrase in phrases:
+                if any(word in clean_text.lower() for word in en_phrase.lower().split()):
+                    suggestions.append(f"'{en_phrase}' → {lang}")
+                    if len(suggestions) >= 3:
+                        break
+            if len(suggestions) >= 3:
+                break
+        
+        error_msg = f'Could not translate "{text}" to {target_language}.'
+        if suggestions:
+            error_msg += f' Did you mean one of these? {", ".join(suggestions)}'
+        else:
+            error_msg += ' Please try a different phrase.'
+        
         return {
             'success': False,
-            'error': f'Could not translate "{text}" to {target_language}. Please try a different phrase.'
+            'error': error_msg
         }
 
 # Test function
@@ -374,13 +453,13 @@ if __name__ == "__main__":
     print("\n🧪 Testing translations:")
     test_cases = [
         ("Thank you", "Luganda"),
+        ("Webale nnyo", "Luganda"),  # Reverse: Luganda → English
         ("Good morning", "Rukiga"),
         ("Good morning", "Acholi"),
         ("Welcome", "Luganda"),
-        ("Hello", "Lusoga"),
-        ("How are you", "Luganda"),
+        ("Oli otya", "Luganda"),  # Reverse: Luganda → English
         ("Open the door", "Ateso"),
-        ("I love you", "Luganda"),
+        ("Nkwagala", "Luganda"),  # Reverse: Luganda → English
         ("What is your name", "Luganda"),
         ("Goodbye", "Runyankole"),
     ]
@@ -388,7 +467,9 @@ if __name__ == "__main__":
     for text, lang in test_cases:
         result = predictor.translate(text, lang)
         if result.get('success'):
-            print(f"\n✅ '{text}' → {lang}: {result['translation']}")
+            direction = "REVERSE" if result.get('detected_source_language') else "FORWARD"
+            print(f"\n✅ [{direction}] '{text}' → {lang}: {result['translation']}")
             print(f"   Confidence: {result.get('confidence', 'N/A')}")
         else:
             print(f"\n❌ '{text}' → {lang}: {result.get('error')}")
+

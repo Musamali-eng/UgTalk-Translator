@@ -26,10 +26,7 @@ def index():
     """Home page"""
     return render_template('index.html')
 
-@app.route('/about')
-def about():
-    """About page"""
-    return render_template('about.html')
+
 
 @app.route('/models')
 def models_page():

@@ -1,5 +1,5 @@
 /**
- * Main JavaScript for AI-Powered Web Service
+ * Main JavaScript for VisionLens AI 💖
  * Handles client-side interactions and API calls
  */
 
@@ -28,7 +28,7 @@ async function apiRequest(endpoint, data = {}) {
         
         return await response.json();
     } catch (error) {
-        console.error('API request failed:', error);
+        console.error('💔 API request failed:', error);
         throw error;
     }
 }
@@ -74,8 +74,10 @@ function formatResult(result) {
     const color = sentimentColors[result.sentiment] || 'secondary';
     const confidence = (result.confidence * 100).toFixed(1);
     
+    const emoji = result.sentiment === 'positive' ? '😊' : (result.sentiment === 'negative' ? '😔' : '😐');
+    
     return `
-        <h5>Sentiment: <span class="badge bg-${color}">${result.sentiment.toUpperCase()}</span></h5>
+        <h5>${emoji} Sentiment: <span class="badge bg-${color}">${result.sentiment.toUpperCase()}</span></h5>
         <p><strong>Confidence:</strong> ${confidence}%</p>
         <p><strong>Score:</strong> ${result.score}</p>
         <hr>
@@ -93,7 +95,7 @@ function showError(message) {
     const errorMessage = document.getElementById('errorMessage');
     
     if (errorDiv && errorMessage) {
-        errorMessage.textContent = message;
+        errorMessage.textContent = '😅 ' + message;
         errorDiv.classList.remove('d-none');
         
         // Hide after 5 seconds
@@ -153,10 +155,10 @@ function setLoading(loading) {
         predictBtn.disabled = loading;
         
         if (loading) {
-            btnText.textContent = 'Analyzing...';
+            btnText.textContent = '⏳ Analyzing...';
             btnSpinner.classList.remove('d-none');
         } else {
-            btnText.textContent = 'Analyze Sentiment';
+            btnText.textContent = '✨ Analyze Text ✨';
             btnSpinner.classList.add('d-none');
         }
     }
@@ -164,7 +166,7 @@ function setLoading(loading) {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('AI-Powered Web Service initialized');
+    console.log('💖 VisionLens AI initialized!');
     
     // Add smooth scrolling to all links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -186,9 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const maxLength = 1000;
             const currentLength = this.value.length;
             const remaining = maxLength - currentLength;
-            
-            // You can add a character counter here if needed
-            console.log(`Characters: ${currentLength}/${maxLength}`);
+            console.log(`💬 Characters: ${currentLength}/${maxLength}`);
         });
     }
 });

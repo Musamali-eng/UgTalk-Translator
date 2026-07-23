@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}History - VisionLens AI{% endblock %}
+{% block title %}History - VisionLens AI 💖{% endblock %}
 
 {% block content %}
 <div class="container mt-5 page-shell">
     <div class="page-heading">
-        <p class="eyebrow">Your workspace</p>
-        <h1>Recent analyses.</h1>
-        <p class="lead">Your latest text results appear here on this device.</p>
+        <p class="eyebrow">💗 Your workspace</p>
+        <h1>Recent analyses 📜</h1>
+        <p class="lead">Your latest text results appear here on this device! ✨</p>
     </div>
     <div id="historyList" class="history-list mt-5"></div>
     <div id="emptyHistory" class="empty-state mt-5">
-        <h3>No analyses yet.</h3>
-        <p>Run a text analysis from the studio and it will appear here.</p>
-        <a href="/" class="btn btn-primary">Start an analysis</a>
+        <h3>💭 No analyses yet...</h3>
+        <p>Run a text analysis from the studio and it will appear here! Let's get started! 🌟</p>
+        <a href="/" class="btn btn-primary">🚀 Start an analysis</a>
     </div>
 </div>
 {% endblock %}
@@ -28,7 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
     empty.classList.add('d-none');
     list.innerHTML = items.map(item => `
         <article class="history-item">
-            <div><span class="eyebrow">${item.model}</span><h3>${item.label}</h3><p>${item.input}</p></div>
+            <div>
+                <span class="eyebrow">${item.model}</span>
+                <h3>${item.label}</h3>
+                <p>${item.input}</p>
+            </div>
             <time>${item.time}</time>
         </article>
     `).join('');

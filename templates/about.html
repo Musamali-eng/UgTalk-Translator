@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}UgTalk - About{% endblock %}
+
+{% block content %}
+<h1><i class="fas fa-info-circle text-success"></i> About UgTalk</h1>
+<hr>
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h4>Project Overview</h4>
+            </div>
+            <div class="card-body">
+                <p><strong>UgTalk</strong> is an AI-Powered Web Service built with Flask that translates English text into multiple Ugandan languages using machine learning.</p>
+                <p>The system uses <strong>TF-IDF vectorization</strong> and <strong>Nearest Neighbors</strong> to find the best translations based on the training dataset.</p>
+                <div class="alert alert-info">
+                    <strong>📊 Dataset:</strong> Language_translation_models_dataset.csv - 2,000+ records from 7 Ugandan languages
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4>Technology Stack</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li><strong>Backend:</strong> Flask (Python)</li>
+                    <li><strong>AI/ML:</strong> Scikit-learn (TF-IDF, k-NN)</li>
+                    <li><strong>Frontend:</strong> Bootstrap 5, Chart.js</li>
+                    <li><strong>Database:</strong> Session-based history</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-warning text-dark">
+                <h4>Supported Languages</h4>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>🇺🇬 Luganda</li>
+                    <li>🇺🇬 Lusoga</li>
+                    <li>🇺🇬 Acholi</li>
+                    <li>🇺🇬 Runyankole</li>
+                    <li>🇺🇬 Ateso</li>
+                    <li>🇺🇬 Lugbara</li>
+                    <li>🇺🇬 Rukiga</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h4>Team Group C</h4>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <h5>Member 1</h5>
+                        <p>Project Lead & Backend</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Member 2</h5>
+                        <p>Frontend Developer</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Member 3</h5>
+                        <p>AI/ML Specialist</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Member 4</h5>
+                        <p>Documentation Lead</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

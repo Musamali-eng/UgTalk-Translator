@@ -1,0 +1,51 @@
+{
+  "model_name": "TF-IDF + Nearest Neighbors",
+  "total_samples": 85,
+  "languages": [
+    "Luganda",
+    "Lusoga",
+    "Runyankole",
+    "Ateso",
+    "Lugbara",
+    "Acholi",
+    "Rukiga"
+  ],
+  "domains": [
+    "Daily Conversation",
+    "Health",
+    "Tourism",
+    "Education",
+    "Business",
+    "Agriculture",
+    "Government"
+  ],
+  "formality_levels": [
+    "Formal",
+    "Informal"
+  ],
+  "language_distribution": {
+    "Luganda": 13,
+    "Lusoga": 12,
+    "Runyankole": 12,
+    "Ateso": 12,
+    "Lugbara": 12,
+    "Acholi": 12,
+    "Rukiga": 12
+  },
+  "domain_distribution": {
+    "Health": 18,
+    "Tourism": 15,
+    "Business": 14,
+    "Agriculture": 14,
+    "Daily Conversation": 12,
+    "Education": 11,
+    "Government": 1
+  },
+  "accuracy": 0.9882352941176471,
+  "samples_evaluated": 85,
+  "correct_predictions": 84,
+  "incorrect_predictions": 1,
+  "features": 38,
+  "training_date": "2026-07-23T15:13:27.761616",
+  "model_type": "TF-IDF + Nearest Neighbors"
+}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}UgTalk - Dashboard{% endblock %}
+
+{% block content %}
+<h1><i class="fas fa-chart-bar text-success"></i> Dashboard</h1>
+<p class="text-muted">Analytics from the Language Translation dataset</p>
+<hr>
+
+{% if error %}
+<div class="alert alert-warning">{{ error }}</div>
+{% else %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="card text-center bg-primary text-white shadow-sm">
+            <div class="card-body">
+                <h2>{{ total_records }}</h2>
+                <p>Total Records</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center bg-success text-white shadow-sm">
+            <div class="card-body">
+                <h2>{{ total_languages }}</h2>
+                <p>Languages</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center bg-warning text-white shadow-sm">
+            <div class="card-body">
+                <h2>{{ total_domains }}</h2>
+                <p>Domains</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center bg-danger text-white shadow-sm">
+            <div class="card-body">
+                <h2>AI</h2>
+                <p>Powered</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header"><h5>Languages Distribution</h5></div>
+            <div class="card-body"><canvas id="langChart"></canvas></div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header"><h5>Domains Distribution</h5></div>
+            <div class="card-body"><canvas id="domainChart"></canvas></div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow-sm">
+            <div class="card-header"><h5>Formality Distribution</h5></div>
+            <div class="card-body"><canvas id="formalityChart"></canvas></div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+{% if not error %}
+const langData = {{ lang_dist|tojson }};
+const domainData = {{ domain_dist|tojson }};
+const formalityData = {{ formality_dist|tojson }};
+
+new Chart(document.getElementById('langChart'), {
+    type: 'bar',
+    data: {
+        labels: Object.keys(langData),
+        datasets: [{ label: 'Records', data: Object.values(langData), backgroundColor: ['#4CAF50','#2196F3','#FF9800','#9C27B0','#f44336','#00BCD4','#8BC34A'] }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false } } }
+});
+
+new Chart(document.getElementById('domainChart'), {
+    type: 'pie',
+    data: {
+        labels: Object.keys(domainData),
+        datasets: [{ data: Object.values(domainData), backgroundColor: ['#FF6B6B','#4ECDC4','#45B7D1','#96CEB4','#FFEAA7','#DDA0DD'] }]
+    },
+    options: { responsive: true }
+});
+
+new Chart(document.getElementById('formalityChart'), {
+    type: 'pie',
+    data: {
+        labels: Object.keys(formalityData),
+        datasets: [{ data: Object.values(formalityData), backgroundColor: ['#42A5F5','#FFA726'] }]
+    },
+    options: { responsive: true }
+});
+{% endif %}
+</script>
+{% endblock %}

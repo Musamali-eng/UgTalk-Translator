@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}Translator Dashboard - VisionLens AI 💖{% endblock %}
+
+{% block content %}
+<div class="container mt-5 page-shell">
+    <div class="page-heading">
+        <p class="eyebrow">  Analytics</p>
+        <h1>Translation Dashboard</h1>
+        <p class="lead">Explore the Ugandan language translation dataset! </p>
+    </div>
+
+    <!-- ============================================================
+         STATS CARDS
+    ============================================================ -->
+    <div class="row g-4 mb-4 mt-3">
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card-dash bg-pink-stat">
+                <div class="stat-icon-dash"> </div>
+                <div class="stat-content-dash">
+                    <div class="stat-number-dash">{{ stats.languages }}</div>
+                    <div class="stat-label-dash">Languages</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card-dash bg-purple-stat">
+                <div class="stat-icon-dash"> </div>
+                <div class="stat-content-dash">
+                    <div class="stat-number-dash">{{ stats.domains }}</div>
+                    <div class="stat-label-dash">Domains</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card-dash bg-teal-stat">
+                <div class="stat-icon-dash"> </div>
+                <div class="stat-content-dash">
+                    <div class="stat-number-dash">{{ stats.total_samples }}</div>
+                    <div class="stat-label-dash">Records</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card-dash bg-rose-stat">
+                <div class="stat-icon-dash"> </div>
+                <div class="stat-content-dash">
+                    <div class="stat-number-dash">
+                        <span class="pulse-dot-dash"></span> {{ stats.status }}
+                    </div>
+                    <div class="stat-label-dash">AI Model</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHARTS
+    ============================================================ -->
+    <div class="row g-4">
+        <!-- Language Distribution -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3> Language Distribution </h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container-dash">
+                        <canvas id="langChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Domain Distribution -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3> Domain Distribution </h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container-dash">
+                        <canvas id="domainChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formality Distribution -->
+    <div class="row mt-4">
+        <div class="col-lg-6 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h3> Formality Distribution </h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container-dash">
+                        <canvas id="formalityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const langData = {{ lang_dist|tojson }};
+    const domainData = {{ domain_dist|tojson }};
+    const formalityData = {{ formality_dist|tojson }};
+
+    const colors = [
+        '#ff6b9d', '#d6336c', '#c2185b', '#ad1457',
+        '#e91e63', '#f06292', '#f48fb1'
+    ];
+
+    // Language Chart
+    new Chart(document.getElementById('langChart'), {
+        type: 'bar',
+        data: {
+            labels: Object.keys(langData),
+            datasets: [{
+                label: 'Phrases',
+                data: Object.values(langData),
+                backgroundColor: colors.slice(0, Object.keys(langData).length),
+                borderRadius: 8,
+                maxBarThickness: 50
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' } },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+
+    // Domain Chart
+    new Chart(document.getElementById('domainChart'), {
+        type: 'pie',
+        data: {
+            labels: Object.keys(domainData),
+            datasets: [{
+                data: Object.values(domainData),
+                backgroundColor: ['#ff6b9d', '#d6336c', '#7b1fa2', '#00897b', '#f57c00', '#e53935', '#5e35b1'],
+                borderWidth: 2,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true } }
+            }
+        }
+    });
+
+    // Formality Chart
+    new Chart(document.getElementById('formalityChart'), {
+        type: 'doughnut',
+        data: {
+            labels: Object.keys(formalityData),
+            datasets: [{
+                data: Object.values(formalityData),
+                backgroundColor: ['#d6336c', '#f48fb1'],
+                borderWidth: 2,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true } }
+            }
+        }
+    });
+});
+</script>
+{% endblock %}
+

@@ -3,7 +3,7 @@ AI-Powered Web Service - Flask Application
 Group C - RECESS Final Project 2026
 """
 
-from flask import Flask, render_template, request, jsonify, send_file
+from flask import Flask, render_template, request, jsonify, send_file, session, redirect, url_for, flash
 import os
 import sys
 
@@ -13,6 +13,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from config import Config
 from models.ml_predictor import MLPredictor
 from models.image_predictor import ImagePredictor
+from models.translator import TranslationPredictor
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -20,6 +21,12 @@ app.config.from_object(Config)
 # Initialize ML-based AI predictor
 predictor = MLPredictor()
 image_predictor = ImagePredictor()
+
+# Initialize UgTalk Translator
+print(" loading UgTalk translation engine...")
+translator = TranslationPredictor()
+LANGUAGES = translator.get_languages()
+DOMAINS = translator.get_domains()
 
 @app.route('/')
 def index():
@@ -118,6 +125,101 @@ def list_models():
         'models': models
     })
 
+# ============================================================
+# UGTALK TRANSLATOR ROUTES
+# ============================================================
+
+@app.route('/translate')
+def translate_page():
+    """Ugandan Language Translator page"""
+    return render_template('translate.html',
+                         languages=LANGUAGES,
+                         domains=DOMAINS)
+
+
+@app.route('/api/translate', methods=['POST'])
+def api_translate():
+    """API endpoint for English ↔ Ugandan translation"""
+    try:
+        data = request.get_json()
+        text = data.get('text', '').strip()
+        target_language = data.get('target_language')
+        domain = data.get('domain', 'All')
+        formality = data.get('formality', 'All')
+
+        if not text:
+            return jsonify({'success': False, 'error': 'No text provided'}), 400
+        if not target_language:
+            return jsonify({'success': False, 'error': 'Target language required'}), 400
+
+        result = translator.translate(text, target_language, domain, formality)
+
+        if result.get('success'):
+            return jsonify({
+                'success': True,
+                'original': result['original'],
+                'translation': result['translation'],
+                'target_language': result['target_language'],
+                'domain': result.get('domain', 'Dictionary'),
+                'formality': result.get('formality', 'Informal'),
+                'confidence': result.get('confidence', 1.0),
+                'direction': result.get('direction', 'forward')
+            })
+        else:
+            return jsonify({'success': False, 'error': result.get('error', 'Translation failed')}), 400
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/translation-dashboard')
+def translation_dashboard():
+    """Translation analytics dashboard"""
+    lang_dist = {}
+    for lang in LANGUAGES:
+        phrases = translator.translations.get(lang, {})
+        lang_dist[lang] = len(phrases)
+
+    domain_dist = {
+        'Daily Conversation': 30, 'Health': 15, 'Tourism': 12,
+        'Education': 10, 'Business': 8, 'Agriculture': 5, 'Government': 5
+    }
+    formality_dist = {'Informal': 55, 'Formal': 30}
+
+    stats = {
+        'languages': len(LANGUAGES),
+        'domains': len(DOMAINS),
+        'total_samples': sum(lang_dist.values()),
+        'status': 'active'
+    }
+
+    return render_template('translation_dashboard.html',
+                         stats=stats,
+                         lang_dist=lang_dist,
+                         domain_dist=domain_dist,
+                         formality_dist=formality_dist)
+
+
+@app.route('/translator-about')
+def translator_about():
+    """About the translator feature"""
+    return render_template('translator_about.html',
+                         languages=LANGUAGES,
+                         domains=DOMAINS,
+                         stats=translator.get_stats())
+
+
+@app.route('/clear-translation-history', methods=['POST'])
+def clear_translation_history():
+    """Clear translation session history"""
+    session['translation_history'] = []
+    session.modified = True
+    return jsonify({'success': True, 'message': 'Translation history cleared'})
+
+
+# ============================================================
+# ERROR HANDLERS
+# ============================================================
+
 @app.errorhandler(404)
 def not_found(error):
     """Handle 404 errors"""
@@ -146,3 +248,4 @@ if __name__ == '__main__':
     print("=" * 60)
     
     app.run(debug=True, host='0.0.0.0', port=5000)
+

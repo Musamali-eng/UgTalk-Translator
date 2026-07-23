@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+
+{% block title %}Translate - VisionLens AI 💖{% endblock %}
+
+{% block content %}
+<div class="container mt-5 page-shell">
+    <div class="page-heading">
+        <p class="eyebrow"> 🌍 Language Bridge</p>
+        <h1>English ↔ Ugandan Translator</h1>
+        <p class="lead">Translate between English and 7 Ugandan languages instantly! </p>
+    </div>
+
+    <!-- ============================================================
+         TRANSLATION FORM
+    ============================================================ -->
+    <div class="row mt-4">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3> Translate your text </h3>
+                </div>
+                <div class="card-body">
+                    <form id="translateForm">
+                        <!-- Source Text -->
+                        <div class="mb-3">
+                            <label for="sourceText" class="form-label"> English text</label>
+                            <textarea class="form-control" id="sourceText" rows="4"
+                                      placeholder="Type or paste English text here..." maxlength="500"></textarea>
+                            <div class="form-text text-end" id="charCount">0 / 500 characters</div>
+                        </div>
+
+                        <!-- Options Row -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="targetLanguage" class="form-label"> Target Language </label>
+                                <select class="form-select" id="targetLanguage">
+                                    <option value="">Choose a language...</option>
+                                    {% for lang in languages %}
+                                    <option value="{{ lang }}">{{ lang }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="domainSelect" class="form-label"> Domain </label>
+                                <select class="form-select" id="domainSelect">
+                                    <option value="All">All Domains</option>
+                                    {% for domain in domains %}
+                                    <option value="{{ domain }}">{{ domain }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn btn-primary w-100 mt-4" id="translateBtn">
+                            <span id="translateBtnText"> Translate </span>
+                            <span id="translateBtnSpinner" class="spinner-border spinner-border-sm d-none"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         ERROR MESSAGE
+    ============================================================ -->
+    <div id="translateError" class="row mt-4 d-none">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="alert" role="alert">
+                <h4 class="alert-heading"> Oops!</h4>
+                <p id="translateErrorMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         TRANSLATION RESULT
+    ============================================================ -->
+    <div id="translateResult" class="row mt-4 d-none">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card result-card">
+                <div class="card-header">
+                    <h3> Translation Complete!</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="translation-box">
+                                <label class="form-label"> Original</label>
+                                <p id="originalText" class="translation-text"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="translation-box translation-output">
+                                <label class="form-label"> Translation</label>
+                                <p id="translatedText" class="translation-text fw-bold"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row g-2 text-center">
+                        <div class="col-md-4 col-6">
+                            <div class="meta-chip">
+                                <span class="meta-label">Language</span>
+                                <span id="resultLanguage" class="meta-value"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="meta-chip">
+                                <span class="meta-label">Domain</span>
+                                <span id="resultDomain" class="meta-value"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6 offset-md-0 offset-3">
+                            <div class="meta-chip">
+                                <span class="meta-label">Confidence</span>
+                                <span id="resultConfidence" class="meta-value"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress mt-3" style="height: 8px;">
+                        <div id="confidenceBar" class="progress-bar" style="width: 0%; transition: width 1s ease;"></div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button type="button" class="btn btn-secondary" id="newTranslationBtn">
+                         New Translation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SUPPORTED LANGUAGES CARD
+    ============================================================ -->
+    <div class="row mt-5">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3> Supported Languages </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row g-2">
+                        {% for lang in languages %}
+                        <div class="col-md-3 col-6">
+                            <div class="lang-badge">
+                                <span class="lang-flag">🇺🇬</span> {{ lang }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <p class="text-muted mt-3 mb-0 small">
+                        <i class="fas fa-info-circle"></i>
+                        Works with common phrases. ML model support coming soon for full sentences!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('translateForm');
+    const sourceText = document.getElementById('sourceText');
+    const charCount = document.getElementById('charCount');
+    const targetLang = document.getElementById('targetLanguage');
+    const domainSelect = document.getElementById('domainSelect');
+    const translateBtn = document.getElementById('translateBtn');
+    const translateBtnText = document.getElementById('translateBtnText');
+    const translateBtnSpinner = document.getElementById('translateBtnSpinner');
+    const translateError = document.getElementById('translateError');
+    const translateErrorMessage = document.getElementById('translateErrorMessage');
+    const translateResult = document.getElementById('translateResult');
+
+    // Char counter
+    sourceText.addEventListener('input', function() {
+        const len = this.value.length;
+        charCount.textContent = len + ' / 500 characters';
+        charCount.classList.toggle('text-danger', len > 450);
+    });
+
+    // New translation button
+    document.getElementById('newTranslationBtn').addEventListener('click', function() {
+        form.reset();
+        translateResult.classList.add('d-none');
+        translateError.classList.add('d-none');
+        sourceText.focus();
+        charCount.textContent = '0 / 500 characters';
+    });
+
+    // Form submit
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const text = sourceText.value.trim();
+        const language = targetLang.value;
+        const domain = domainSelect.value;
+
+        // Validate
+        if (!text) {
+            showTranslateError('Please enter some text to translate.');
+            return;
+        }
+        if (!language) {
+            showTranslateError('Please select a target language.');
+            return;
+        }
+
+        // Loading state
+        translateBtn.disabled = true;
+        translateBtnText.textContent = ' Translating...';
+        translateBtnSpinner.classList.remove('d-none');
+        translateResult.classList.add('d-none');
+        translateError.classList.add('d-none');
+
+        try {
+            const response = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    text: text,
+                    target_language: language,
+                    domain: domain
+                })
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                // Populate result
+                document.getElementById('originalText').textContent = data.original;
+                document.getElementById('translatedText').textContent = data.translation;
+                document.getElementById('resultLanguage').textContent = data.target_language;
+                document.getElementById('resultDomain').textContent = data.domain;
+                const confPct = (data.confidence * 100).toFixed(1);
+                document.getElementById('resultConfidence').textContent = confPct + '%';
+                document.getElementById('confidenceBar').style.width = confPct + '%';
+                document.getElementById('confidenceBar').className = 'progress-bar bg-success';
+
+                translateResult.classList.remove('d-none');
+                translateResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                // Save to translation history (localStorage)
+                saveTranslationHistory(text, data.translation, language, data.domain, confPct);
+            } else {
+                showTranslateError(data.error || 'Translation failed. Please try again.');
+            }
+        } catch (err) {
+            showTranslateError('Network error. Please try again.');
+            console.error('Translation error:', err);
+        } finally {
+            translateBtn.disabled = false;
+            translateBtnText.textContent = ' Translate ';
+            translateBtnSpinner.classList.add('d-none');
+        }
+    });
+
+    function showTranslateError(msg) {
+        translateErrorMessage.textContent = msg;
+        translateError.classList.remove('d-none');
+        translateError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function saveTranslationHistory(original, translation, language, domain, confidence) {
+        const history = JSON.parse(localStorage.getItem('visionlens-translation-history') || '[]');
+        history.unshift({
+            original: original.slice(0, 90),
+            translation: translation.slice(0, 90),
+            language: language,
+            domain: domain,
+            confidence: confidence,
+            time: new Date().toLocaleString()
+        });
+        localStorage.setItem('visionlens-translation-history', JSON.stringify(history.slice(0, 20)));
+    }
+});
+</script>
+{% endblock %}
+

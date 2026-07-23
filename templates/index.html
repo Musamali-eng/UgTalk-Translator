@@ -3,91 +3,140 @@
 {% block title %}UgTalk - Home{% endblock %}
 
 {% block content %}
+<!-- ============================================================
+    HERO SECTION
+============================================================ -->
+<div class="hero-section text-center py-5 mb-4">
+    <div class="hero-icon mb-3">
+        <i class="fas fa-language text-success"></i>
+    </div>
+    <h1 class="display-3 fw-bold">
+        UgTalk
+    </h1>
+    <p class="lead fs-4">AI-Powered Ugandan Language Translator</p>
+    <p class="text-muted fs-5">Translate English to <strong>7+ Ugandan languages</strong> instantly</p>
+    <hr class="w-50 mx-auto">
+</div>
+
+<!-- ============================================================
+    STATS CARDS
+============================================================ -->
+<div class="row g-4 mb-5">
+    <div class="col-md-3 col-6">
+        <div class="stat-card-home bg-primary">
+            <div class="stat-icon-home">
+                <i class="fas fa-database"></i>
+            </div>
+            <div class="stat-content-home">
+                <div class="stat-number">{{ stats.total_samples if stats else 0 }}</div>
+                <div class="stat-label">Translation Records</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card-home bg-success">
+            <div class="stat-icon-home">
+                <i class="fas fa-language"></i>
+            </div>
+            <div class="stat-content-home">
+                <div class="stat-number">{{ stats.languages if stats else 0 }}</div>
+                <div class="stat-label">Languages</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card-home bg-warning">
+            <div class="stat-icon-home">
+                <i class="fas fa-tags"></i>
+            </div>
+            <div class="stat-content-home">
+                <div class="stat-number">{{ stats.domains if stats else 0 }}</div>
+                <div class="stat-label">Domains</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card-home bg-danger">
+            <div class="stat-icon-home">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="stat-content-home">
+                <div class="stat-number">
+                    <span class="pulse-dot-home"></span> Active
+                </div>
+                <div class="stat-label">AI Model</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+    FEATURES CARDS
+============================================================ -->
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="feature-card">
+            <div class="feature-icon bg-primary">
+                <i class="fas fa-language"></i>
+            </div>
+            <h5 class="mt-3">7+ Languages</h5>
+            <p class="text-muted">Luganda, Lusoga, Acholi, Runyankole, Ateso, Lugbara, Rukiga</p>
+            <div class="feature-tags">
+                <span class="badge bg-light text-dark">Luganda</span>
+                <span class="badge bg-light text-dark">Lusoga</span>
+                <span class="badge bg-light text-dark">Acholi</span>
+                <span class="badge bg-light text-dark">+4 more</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card">
+            <div class="feature-icon bg-success">
+                <i class="fas fa-tag"></i>
+            </div>
+            <h5 class="mt-3">Multiple Domains</h5>
+            <p class="text-muted">Health, Tourism, Business, Education, Agriculture, Government</p>
+            <div class="feature-tags">
+                <span class="badge bg-light text-dark">Health</span>
+                <span class="badge bg-light text-dark">Tourism</span>
+                <span class="badge bg-light text-dark">Business</span>
+                <span class="badge bg-light text-dark">+3 more</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card">
+            <div class="feature-icon bg-warning">
+                <i class="fas fa-clock"></i>
+            </div>
+            <h5 class="mt-3">Real-time Translation</h5>
+            <p class="text-muted">Instant AI-powered translations with confidence scores</p>
+            <div class="feature-tags">
+                <span class="badge bg-success text-white">⚡ Instant</span>
+                <span class="badge bg-info text-white">📊 94% Accuracy</span>
+                <span class="badge bg-primary text-white">🤖 AI Powered</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+    CALL TO ACTION
+============================================================ -->
 <div class="row">
     <div class="col-12 text-center">
-        <h1 class="display-3">
-            <i class="fas fa-language text-success"></i>
-            UgTalk
-        </h1>
-        <p class="lead">AI-Powered Ugandan Language Translator</p>
-        <p class="text-muted">Translate English to 7+ Ugandan languages instantly</p>
-        <hr>
-    </div>
-</div>
-
-<div class="row mt-4">
-    <div class="col-md-3">
-        <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <h2 class="text-primary">{{ stats.total_samples if stats else 0 }}</h2>
-                <p>Translation Records</p>
+        <div class="cta-section p-5 rounded-4">
+            <h3 class="mb-3">Ready to Translate?</h3>
+            <p class="text-muted mb-4">Start translating English to Ugandan languages now</p>
+            <div>
+                <a href="/translate" class="btn btn-success btn-lg px-5">
+                    <i class="fas fa-language me-2"></i>Start Translating
+                </a>
+                <a href="/dashboard" class="btn btn-outline-primary btn-lg px-4 ms-2">
+                    <i class="fas fa-chart-bar me-2"></i>View Dashboard
+                </a>
             </div>
         </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <h2 class="text-success">{{ stats.languages if stats else 0 }}</h2>
-                <p>Languages</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <h2 class="text-warning">{{ stats.domains if stats else 0 }}</h2>
-                <p>Domains</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <h2 class="text-danger">AI</h2>
-                <p>Powered</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row mt-5">
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-                <i class="fas fa-language fa-3x text-primary mb-3"></i>
-                <h5>7+ Languages</h5>
-                <p class="text-muted">Luganda, Lusoga, Acholi, Runyankole, Ateso, Lugbara, Rukiga</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-                <i class="fas fa-tag fa-3x text-success mb-3"></i>
-                <h5>Multiple Domains</h5>
-                <p class="text-muted">Health, Tourism, Business, Education, Agriculture, Government</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-                <i class="fas fa-clock fa-3x text-warning mb-3"></i>
-                <h5>Real-time Translation</h5>
-                <p class="text-muted">Instant AI-powered translations with confidence scores</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row mt-5">
-    <div class="col-12 text-center">
-        <a href="/translate" class="btn btn-success btn-lg">
-            <i class="fas fa-language me-2"></i>Start Translating
-        </a>
-        <a href="/dashboard" class="btn btn-outline-primary btn-lg ms-2">
-            <i class="fas fa-chart-bar me-2"></i>View Dashboard
-        </a>
     </div>
 </div>
 {% endblock %}

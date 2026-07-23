@@ -1,5 +1,5 @@
 # app.py - Complete Flask Application for Ugandan Language Translator
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
 from models.predictor import TranslationPredictor
 from datetime import datetime
 import json
@@ -75,6 +75,7 @@ def translate():
                          domains=DOMAINS,
                          formality_levels=FORMALITY)
 
+
 @app.route('/api/translate', methods=['POST'])
 def api_translate():
     """API endpoint for translation"""
@@ -109,6 +110,7 @@ def api_translate():
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
+
 @app.route('/dashboard')
 def dashboard():
     """Analytics dashboard"""
@@ -129,15 +131,61 @@ def dashboard():
                          total_languages=len(df['Target_Language'].unique()),
                          total_domains=len(df['Domain'].unique()))
 
+
 @app.route('/history')
 def history():
     """Translation history"""
     history = session.get('history', [])
     return render_template('history.html', history=history)
 
+
+# ============================================================
+# CLEAR HISTORY ROUTE
+# ============================================================
+@app.route('/clear_history', methods=['POST'])
+def clear_history():
+    """Clear all translation history"""
+    session['history'] = []
+    session.modified = True
+    flash('History cleared successfully!', 'success')
+    return redirect(url_for('history'))
+
+
+# ============================================================
+# REMOVE SINGLE HISTORY ENTRY (API)
+# ============================================================
+@app.route('/api/history/remove', methods=['POST'])
+def remove_history_entry():
+    """Remove a single translation from history"""
+    try:
+        data = request.json
+        index = data.get('index')
+        
+        if 'history' not in session:
+            return jsonify({'success': False, 'error': 'No history found'}), 404
+        
+        history = session['history']
+        if index >= len(history):
+            return jsonify({'success': False, 'error': 'Index out of range'}), 400
+        
+        # Remove the entry
+        removed = history.pop(index)
+        session['history'] = history
+        session.modified = True
+        
+        return jsonify({
+            'success': True,
+            'message': f'Removed: {removed.get("original", "Unknown")}'
+        })
+        
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 @app.route('/about')
 def about():
     return render_template('about.html')
+
 
 @app.route('/health')
 def health():

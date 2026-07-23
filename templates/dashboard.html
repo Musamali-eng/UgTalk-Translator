@@ -1,108 +1,337 @@
 {% extends "base.html" %}
 
-{% block title %}UgTalk - Dashboard{% endblock %}
+{% block title %}UgTalk - Analytics Dashboard{% endblock %}
 
 {% block content %}
-<h1><i class="fas fa-chart-bar text-success"></i> Dashboard</h1>
-<p class="text-muted">Analytics from the Language Translation dataset</p>
+<!-- ============================================================
+    PAGE HEADER
+============================================================ -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="display-6 fw-bold mb-0">
+            <i class="fas fa-chart-pie text-success me-2"></i>Dashboard
+        </h1>
+        <p class="text-muted mb-0">Real-time analytics from the Language Translation dataset</p>
+    </div>
+    <div>
+        <span class="badge bg-success bg-opacity-10 text-success px-3 py-2">
+            <i class="fas fa-sync-alt me-1"></i> Live Data
+        </span>
+    </div>
+</div>
 <hr>
 
+<!-- ============================================================
+    ERROR MESSAGE
+============================================================ -->
 {% if error %}
-<div class="alert alert-warning">{{ error }}</div>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="fas fa-exclamation-triangle me-2"></i>
+    {{ error }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
 {% else %}
-<div class="row">
-    <div class="col-md-3">
-        <div class="card text-center bg-primary text-white shadow-sm">
-            <div class="card-body">
-                <h2>{{ total_records }}</h2>
-                <p>Total Records</p>
+
+<!-- ============================================================
+    STATS CARDS
+============================================================ -->
+<div class="row g-4 mb-4">
+    <!-- Total Records -->
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card bg-primary-gradient">
+            <div class="stat-icon">
+                <i class="fas fa-database"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ total_records }}</div>
+                <div class="stat-label">Total Records</div>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card text-center bg-success text-white shadow-sm">
-            <div class="card-body">
-                <h2>{{ total_languages }}</h2>
-                <p>Languages</p>
+
+    <!-- Languages -->
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card bg-success-gradient">
+            <div class="stat-icon">
+                <i class="fas fa-language"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ total_languages }}</div>
+                <div class="stat-label">Languages</div>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card text-center bg-warning text-white shadow-sm">
-            <div class="card-body">
-                <h2>{{ total_domains }}</h2>
-                <p>Domains</p>
+
+    <!-- Domains -->
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card bg-warning-gradient">
+            <div class="stat-icon">
+                <i class="fas fa-tags"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ total_domains }}</div>
+                <div class="stat-label">Domains</div>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card text-center bg-danger text-white shadow-sm">
-            <div class="card-body">
-                <h2>AI</h2>
-                <p>Powered</p>
+
+    <!-- AI Status -->
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card bg-danger-gradient">
+            <div class="stat-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">
+                    <span class="pulse-dot"></span> Active
+                </div>
+                <div class="stat-label">AI Model Status</div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row mt-4">
-    <div class="col-md-6">
-        <div class="card shadow-sm">
-            <div class="card-header"><h5>Languages Distribution</h5></div>
-            <div class="card-body"><canvas id="langChart"></canvas></div>
+<!-- ============================================================
+    CHARTS SECTION
+============================================================ -->
+<div class="row g-4">
+    <!-- Language Distribution Chart -->
+    <div class="col-lg-6">
+        <div class="card dashboard-card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-flag me-2 text-primary"></i>Languages Distribution
+                </h5>
+                <span class="badge bg-primary bg-opacity-10 text-primary">
+                    <i class="fas fa-chart-bar me-1"></i> Bar Chart
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="langChart"></canvas>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 text-muted small">
+                <i class="fas fa-info-circle me-1"></i>
+                Distribution of translation records by target language
+            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card shadow-sm">
-            <div class="card-header"><h5>Domains Distribution</h5></div>
-            <div class="card-body"><canvas id="domainChart"></canvas></div>
+
+    <!-- Domain Distribution Chart -->
+    <div class="col-lg-6">
+        <div class="card dashboard-card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-tag me-2 text-warning"></i>Domains Distribution
+                </h5>
+                <span class="badge bg-warning bg-opacity-10 text-warning">
+                    <i class="fas fa-chart-pie me-1"></i> Pie Chart
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="domainChart"></canvas>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 text-muted small">
+                <i class="fas fa-info-circle me-1"></i>
+                Distribution of translations by domain/category
+            </div>
         </div>
     </div>
 </div>
 
+<!-- ============================================================
+    FORMALITY CHART (Full Width)
+============================================================ -->
 <div class="row mt-4">
-    <div class="col-md-6 offset-md-3">
-        <div class="card shadow-sm">
-            <div class="card-header"><h5>Formality Distribution</h5></div>
-            <div class="card-body"><canvas id="formalityChart"></canvas></div>
+    <div class="col-lg-8 mx-auto">
+        <div class="card dashboard-card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-user-tie me-2 text-info"></i>Formality Distribution
+                </h5>
+                <span class="badge bg-info bg-opacity-10 text-info">
+                    <i class="fas fa-chart-pie me-1"></i> Pie Chart
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="formalityChart"></canvas>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 text-muted small">
+                <i class="fas fa-info-circle me-1"></i>
+                Distribution of translations by formality level (Formal vs Informal)
+            </div>
         </div>
     </div>
 </div>
+
 {% endif %}
 {% endblock %}
 
+<!-- ============================================================
+    SCRIPTS
+============================================================ -->
 {% block scripts %}
 <script>
 {% if not error %}
+// Data from Flask
 const langData = {{ lang_dist|tojson }};
 const domainData = {{ domain_dist|tojson }};
 const formalityData = {{ formality_dist|tojson }};
 
-new Chart(document.getElementById('langChart'), {
+// ============================================================
+// LANGUAGE CHART - Bar Chart
+// ============================================================
+const langCtx = document.getElementById('langChart').getContext('2d');
+new Chart(langCtx, {
     type: 'bar',
     data: {
         labels: Object.keys(langData),
-        datasets: [{ label: 'Records', data: Object.values(langData), backgroundColor: ['#4CAF50','#2196F3','#FF9800','#9C27B0','#f44336','#00BCD4','#8BC34A'] }]
+        datasets: [{
+            label: 'Number of Records',
+            data: Object.values(langData),
+            backgroundColor: [
+                'rgba(76, 175, 80, 0.8)',
+                'rgba(33, 150, 243, 0.8)',
+                'rgba(255, 152, 0, 0.8)',
+                'rgba(156, 39, 176, 0.8)',
+                'rgba(244, 67, 54, 0.8)',
+                'rgba(0, 188, 212, 0.8)',
+                'rgba(139, 195, 74, 0.8)'
+            ],
+            borderColor: [
+                '#4CAF50', '#2196F3', '#FF9800', '#9C27B0',
+                '#f44336', '#00BCD4', '#8BC34A'
+            ],
+            borderWidth: 2,
+            borderRadius: 6,
+            maxBarThickness: 50
+        }]
     },
-    options: { responsive: true, plugins: { legend: { display: false } } }
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        const total = Object.values(langData).reduce((a, b) => a + b, 0);
+                        const percentage = ((context.parsed.y / total) * 100).toFixed(1);
+                        return context.parsed.y + ' records (' + percentage + '%)';
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: 'rgba(0,0,0,0.05)'
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                }
+            }
+        }
+    }
 });
 
-new Chart(document.getElementById('domainChart'), {
+// ============================================================
+// DOMAIN CHART - Pie Chart
+// ============================================================
+const domainCtx = document.getElementById('domainChart').getContext('2d');
+new Chart(domainCtx, {
     type: 'pie',
     data: {
         labels: Object.keys(domainData),
-        datasets: [{ data: Object.values(domainData), backgroundColor: ['#FF6B6B','#4ECDC4','#45B7D1','#96CEB4','#FFEAA7','#DDA0DD'] }]
+        datasets: [{
+            data: Object.values(domainData),
+            backgroundColor: [
+                '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4',
+                '#FFEAA7', '#DDA0DD', '#98D8C8'
+            ],
+            borderWidth: 2,
+            borderColor: '#fff'
+        }]
     },
-    options: { responsive: true }
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    padding: 15,
+                    usePointStyle: true,
+                    pointStyle: 'circle',
+                    font: {
+                        size: 12
+                    }
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        const total = Object.values(domainData).reduce((a, b) => a + b, 0);
+                        const percentage = ((context.parsed / total) * 100).toFixed(1);
+                        return context.label + ': ' + context.parsed + ' (' + percentage + '%)';
+                    }
+                }
+            }
+        }
+    }
 });
 
-new Chart(document.getElementById('formalityChart'), {
+// ============================================================
+// FORMALITY CHART - Pie Chart
+// ============================================================
+const formalityCtx = document.getElementById('formalityChart').getContext('2d');
+new Chart(formalityCtx, {
     type: 'pie',
     data: {
         labels: Object.keys(formalityData),
-        datasets: [{ data: Object.values(formalityData), backgroundColor: ['#42A5F5','#FFA726'] }]
+        datasets: [{
+            data: Object.values(formalityData),
+            backgroundColor: ['#42A5F5', '#FFA726'],
+            borderWidth: 2,
+            borderColor: '#fff'
+        }]
     },
-    options: { responsive: true }
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    padding: 15,
+                    usePointStyle: true,
+                    pointStyle: 'circle',
+                    font: {
+                        size: 13
+                    }
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        const total = Object.values(formalityData).reduce((a, b) => a + b, 0);
+                        const percentage = ((context.parsed / total) * 100).toFixed(1);
+                        return context.label + ': ' + context.parsed + ' (' + percentage + '%)';
+                    }
+                }
+            }
+        }
+    }
 });
 {% endif %}
 </script>

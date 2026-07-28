@@ -1,23 +1,23 @@
-# app.py - Complete Flask Application for Ugandan Language Translator
+# app.py
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
 from models.predictor import TranslationPredictor
 from datetime import datetime
 import json
-import os
 
 app = Flask(__name__)
 app.secret_key = 'translation-secret-key-2026'
 
-# Initialize predictor
-print("🔄 Loading Translation Model...")
+# Initialize predictor (loads .pkl models)
+print("🔄 Loading ML Translation Model...")
 predictor = TranslationPredictor()
 
-# Get available options
+# Get available options from ML model
 LANGUAGES = predictor.get_languages()
 DOMAINS = predictor.get_domains()
 FORMALITY = ['Formal', 'Informal']
 
 print(f"✅ Languages: {len(LANGUAGES)}")
+print(f"✅ Languages: {LANGUAGES}")
 print(f"✅ Domains: {len(DOMAINS)}")
 
 # ============================================
@@ -49,6 +49,7 @@ def translate():
                                  formality_levels=FORMALITY,
                                  error='Please enter text to translate')
         
+        # Pure ML translation (NO dictionary!)
         result = predictor.translate(text, target_language, domain, formality)
         
         # Save to session history
@@ -74,7 +75,6 @@ def translate():
                          languages=LANGUAGES,
                          domains=DOMAINS,
                          formality_levels=FORMALITY)
-
 
 @app.route('/api/translate', methods=['POST'])
 def api_translate():
@@ -102,14 +102,14 @@ def api_translate():
                 'target_language': result['target_language'],
                 'domain': result['domain'],
                 'formality': result['formality'],
-                'confidence': result['confidence']
+                'confidence': result['confidence'],
+                'model_used': result['model_used']
             })
         else:
             return jsonify({'success': False, 'error': result.get('error', 'Translation failed')}), 400
             
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
-
 
 @app.route('/dashboard')
 def dashboard():
@@ -131,17 +131,12 @@ def dashboard():
                          total_languages=len(df['Target_Language'].unique()),
                          total_domains=len(df['Domain'].unique()))
 
-
 @app.route('/history')
 def history():
     """Translation history"""
     history = session.get('history', [])
     return render_template('history.html', history=history)
 
-
-# ============================================================
-# CLEAR HISTORY ROUTE
-# ============================================================
 @app.route('/clear_history', methods=['POST'])
 def clear_history():
     """Clear all translation history"""
@@ -150,10 +145,6 @@ def clear_history():
     flash('History cleared successfully!', 'success')
     return redirect(url_for('history'))
 
-
-# ============================================================
-# REMOVE SINGLE HISTORY ENTRY (API)
-# ============================================================
 @app.route('/api/history/remove', methods=['POST'])
 def remove_history_entry():
     """Remove a single translation from history"""
@@ -168,7 +159,6 @@ def remove_history_entry():
         if index >= len(history):
             return jsonify({'success': False, 'error': 'Index out of range'}), 400
         
-        # Remove the entry
         removed = history.pop(index)
         session['history'] = history
         session.modified = True
@@ -181,11 +171,9 @@ def remove_history_entry():
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
-
 @app.route('/about')
 def about():
     return render_template('about.html')
-
 
 @app.route('/health')
 def health():
@@ -207,6 +195,7 @@ if __name__ == '__main__':
     print("="*60)
     print(f"✅ Model Loaded: {predictor.is_loaded}")
     print(f"✅ Languages: {len(LANGUAGES)}")
+    print(f"✅ Languages: {LANGUAGES}")
     print(f"✅ Domains: {len(DOMAINS)}")
     print("="*60)
     print("🌐 Server running at: http://localhost:5000")

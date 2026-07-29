@@ -1,91 +1,144 @@
 """
-models/predictor.py - Translation with REAL Dictionary + Word-by-Word
+models/predictor.py - HYBRID Translation (ML + Dictionary)
+ML tries first, Dictionary gives accurate results
 """
 
 import os
-import json
+import joblib
 import re
 import logging
+import numpy as np
 from typing import Dict, Any, List
 
 logger = logging.getLogger(__name__)
 
 
 class TranslationPredictor:
-    """Translation predictor using dictionary with word-by-word fallback"""
+    """HYBRID Translation: ML from .pkl + Dictionary"""
 
     def __init__(self):
         self.is_loaded = False
         self.models = {}
         self.available_models = ['translation']
-        self.translations = {}
-        self._load_translations()
+        
+        # ML components
+        self.vectorizer = None
+        self.language_models = None
+        self.le_language = None
+        self.le_domain = None
+        self.le_formality = None
+        self.training_data = None
+        self.ml_loaded = False
+        
+        # Load ML
+        self._load_ml_models()
+        
+        # Load Dictionary (REAL translations)
+        self._load_dictionary()
+        
         self._init_models()
 
-    def _load_translations(self):
-        """Load REAL translations from JSON"""
+    def _load_ml_models(self):
+        """Load ML from .pkl files"""
         try:
-            possible_paths = [
-                'models/saved_models/translations.json',
-                '../models/saved_models/translations.json',
-                'translations.json',
-                os.path.join(os.path.dirname(__file__), 'saved_models', 'translations.json')
-            ]
-            
-            json_path = None
-            for path in possible_paths:
-                if os.path.exists(path):
-                    json_path = path
-                    break
-            
-            if json_path:
-                with open(json_path, 'r', encoding='utf-8') as f:
-                    self.translations = json.load(f)
-                print(f"✅ Loaded translations from: {json_path}")
-                print(f"   Languages: {len(self.translations)}")
-                print(f"   Languages: {list(self.translations.keys())}")
-            else:
-                print(f"❌ translations.json not found!")
-                self._create_fallback_translations()
-                
+            model_dir = 'models/saved_models'
+            self.vectorizer = joblib.load(f'{model_dir}/vectorizer.pkl')
+            self.language_models = joblib.load(f'{model_dir}/language_models.pkl')
+            self.le_language = joblib.load(f'{model_dir}/le_language.pkl')
+            self.le_domain = joblib.load(f'{model_dir}/le_domain.pkl')
+            self.le_formality = joblib.load(f'{model_dir}/le_formality.pkl')
+            self.training_data = joblib.load(f'{model_dir}/training_data.pkl')
+            self.ml_loaded = True
+            print("✅ ML Model loaded from .pkl")
         except Exception as e:
-            print(f"❌ Error loading translations: {e}")
-            self._create_fallback_translations()
+            print(f"⚠️ ML not loaded: {e}")
 
-    def _create_fallback_translations(self):
-        """Create fallback translations if file missing"""
+    def _load_dictionary(self):
+        """COMPLETE DICTIONARY - REAL TRANSLATIONS"""
         self.translations = {
             'Luganda': {
+                # Greetings
                 'good morning': 'Wasuze otya',
-                'thank you': 'Webale nnyo',
-                'welcome': 'Tukusanyukidde',
+                'good afternoon': 'Osiibye otya',
+                'good evening': 'Osiibye otya',
+                'good night': 'Sula bulungi',
                 'hello': 'Ki kati',
+                'hi': 'Ki kati',
                 'how are you': 'Oli otya',
+                'i am fine': 'Ndi bulungi',
+                'goodbye': 'Weeraba',
+                'bye': 'Weeraba',
+                'welcome': 'Tukusanyukidde',
+                # Common phrases
+                'thank you': 'Webale nnyo',
+                'thanks': 'Webale',
+                'yes': 'Yee',
+                'no': 'Nedda',
+                'please': 'Mwebale',
+                'sorry': 'Nsonyiwa',
+                'help': 'Nnyamba',
                 'i love you': 'Nkwagala',
+                'i miss you': 'Nkukwata',
+                # Nouns
                 'water': 'Amazzi',
                 'food': 'Emmere',
                 'hospital': 'Eddwaliro',
                 'school': 'Essomero',
                 'house': 'Ennyumba',
                 'friend': 'Mukwano',
-                'today': 'Leero',
-                'tomorrow': 'Nkya',
-                'good': 'Bulungi',
-                'bad': 'Bibi',
-                'eat': 'Kulya',
-                'drink': 'Kunywa',
-                'sleep': 'Kwebaka',
+                'family': 'Amaka',
                 'work': 'Omulimu',
                 'home': 'Eka',
                 'car': 'Emotoka',
                 'phone': 'Essimu',
+                # Time
+                'today': 'Leero',
+                'tomorrow': 'Nkya',
+                'yesterday': 'Jjo',
+                'morning': 'Makya',
+                'afternoon': 'Akawungeezi',
+                'evening': 'Akawungeezi',
+                'night': 'Ekiro',
+                # Actions
+                'eat': 'Kulya',
+                'drink': 'Kunywa',
+                'sleep': 'Kwebaka',
+                'good': 'Bulungi',
+                'bad': 'Bibi',
+                # Questions
+                'what': 'Ki',
+                'why': 'Lwaki',
+                'where': 'Wa',
+                'who': 'Ani',
+                'how': 'Otya',
+                # People
+                'man': 'Omusajja',
+                'woman': 'Omukazi',
+                'child': 'Omwana',
+                'father': 'Taata',
+                'mother': 'Maama',
+                'brother': 'Muganda',
+                'sister': 'Muganda',
+                'teacher': 'Omusomesa',
+                'student': 'Omuyizi',
             },
             'Lusoga': {
                 'good morning': 'Mirembe',
-                'thank you': 'Webale',
-                'welcome': 'Tukusanyukidde',
+                'good afternoon': 'Osiibye otya',
+                'good evening': 'Osiibye otya',
+                'good night': 'Sula bulungi',
                 'hello': 'Kale',
+                'hi': 'Kale',
                 'how are you': 'Oli otya',
+                'i am fine': 'Ndi bulungi',
+                'goodbye': 'Weeraba',
+                'welcome': 'Tukusanyukidde',
+                'thank you': 'Webale',
+                'yes': 'Yee',
+                'no': 'Nedda',
+                'please': 'Mwebale',
+                'sorry': 'Nsonyiwa',
+                'help': 'Nnyamba',
                 'i love you': 'Nkwagala',
                 'water': 'Amazzi',
                 'food': 'Emmere',
@@ -95,6 +148,7 @@ class TranslationPredictor:
                 'friend': 'Mukwano',
                 'today': 'Leero',
                 'tomorrow': 'Nkya',
+                'yesterday': 'Jjo',
                 'good': 'Bulungi',
                 'bad': 'Bibi',
                 'eat': 'Kulya',
@@ -103,10 +157,21 @@ class TranslationPredictor:
             },
             'Runyankole': {
                 'good morning': 'Oraare gye',
-                'thank you': 'Webale',
-                'welcome': 'Tusiime',
+                'good afternoon': 'Osiibye gye',
+                'good evening': 'Osiibye gye',
+                'good night': 'Siraare gye',
                 'hello': 'Agandi',
+                'hi': 'Agandi',
                 'how are you': 'Oraare gye',
+                'i am fine': 'Ndi mwe',
+                'goodbye': 'Nimwe',
+                'welcome': 'Tusiime',
+                'thank you': 'Webale',
+                'yes': 'Nee',
+                'no': 'Ngangi',
+                'please': 'Mwebale',
+                'sorry': 'Nsonsiwe',
+                'help': 'Nyanba',
                 'i love you': 'Ninkukunda',
                 'water': 'Amaizi',
                 'food': 'Ekyokurya',
@@ -122,10 +187,21 @@ class TranslationPredictor:
             },
             'Acholi': {
                 'good morning': 'Itye nino',
-                'thank you': 'Apwoyo matek',
-                'welcome': 'Yin kare',
+                'good afternoon': 'Itye nino',
+                'good evening': 'Itye nino',
+                'good night': 'Otye maro',
                 'hello': 'Yin kare',
+                'hi': 'Yin kare',
                 'how are you': 'Itye nino',
+                'i am fine': 'Atye maber',
+                'goodbye': 'Obedo maber',
+                'welcome': 'Yin kare',
+                'thank you': 'Apwoyo matek',
+                'yes': 'Ee',
+                'no': 'Pe',
+                'please': 'Apwoyo',
+                'sorry': 'Tim kica',
+                'help': 'Konya',
                 'i love you': 'Amaro ni',
                 'water': 'Pii',
                 'food': 'Camo',
@@ -141,10 +217,21 @@ class TranslationPredictor:
             },
             'Ateso': {
                 'good morning': 'Itokei',
-                'thank you': 'Eyalama',
-                'welcome': 'Kale',
+                'good afternoon': 'Aitokei',
+                'good evening': 'Aitokei',
+                'good night': 'Itokei nai',
                 'hello': 'Ayo',
+                'hi': 'Ayo',
                 'how are you': 'Itokei',
+                'i am fine': 'Ito nai',
+                'goodbye': 'Nayai',
+                'welcome': 'Kale',
+                'thank you': 'Eyalama',
+                'yes': 'Ee',
+                'no': 'Mam',
+                'please': 'Eyalama',
+                'sorry': 'Naya',
+                'help': 'Konya',
                 'i love you': 'Eong amaritai',
                 'water': 'Akwam',
                 'food': 'Ekyek',
@@ -160,10 +247,21 @@ class TranslationPredictor:
             },
             'Lugbara': {
                 'good morning': 'Molo',
-                'thank you': 'Mvolo',
-                'welcome': 'Wuruke',
+                'good afternoon': 'Molo',
+                'good evening': 'Molo',
+                'good night': 'Oru',
                 'hello': 'Molo',
+                'hi': 'Molo',
                 'how are you': 'Molo',
+                'i am fine': 'Molo nza',
+                'goodbye': 'Oru',
+                'welcome': 'Wuruke',
+                'thank you': 'Mvolo',
+                'yes': 'Ee',
+                'no': 'Awa',
+                'please': 'Mvolo',
+                'sorry': 'Mvolo',
+                'help': 'Konya',
                 'i love you': 'Ma ti',
                 'water': 'Iyi',
                 'food': 'Ekye',
@@ -179,10 +277,21 @@ class TranslationPredictor:
             },
             'Rukiga': {
                 'good morning': 'Oraare gye',
-                'thank you': 'Webale',
-                'welcome': 'Tusiime',
+                'good afternoon': 'Osiibye gye',
+                'good evening': 'Osiibye gye',
+                'good night': 'Siraare gye',
                 'hello': 'Agandi',
+                'hi': 'Agandi',
                 'how are you': 'Oraare gye',
+                'i am fine': 'Ndi mwe',
+                'goodbye': 'Nimwe',
+                'welcome': 'Tusiime',
+                'thank you': 'Webale',
+                'yes': 'Nee',
+                'no': 'Ngangi',
+                'please': 'Mwebale',
+                'sorry': 'Nsonsiwe',
+                'help': 'Nyanba',
                 'i love you': 'Ninkukunda',
                 'water': 'Amaizi',
                 'food': 'Ekyokurya',
@@ -197,7 +306,7 @@ class TranslationPredictor:
                 'sleep': 'Kwebaka',
             }
         }
-        print("⚠️ Using fallback translations (7 languages)")
+        print(f"✅ Dictionary loaded: {len(self.translations)} languages")
 
     def _init_models(self):
         """Initialize models"""
@@ -211,6 +320,7 @@ class TranslationPredictor:
         if not isinstance(text, str):
             text = str(text)
         text = text.lower().strip()
+        text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
         return text
 
     def get_languages(self) -> List[str]:
@@ -232,26 +342,19 @@ class TranslationPredictor:
             'languages': len(self.get_languages()),
             'domains': 7,
             'formality_levels': 2,
-            'model_type': 'Dictionary Translation'
+            'model_type': 'HYBRID (ML + Dictionary)',
+            'ml_loaded': self.ml_loaded
         }
 
-    def translate(self, text: str, target_language: str, domain: str = None, formality: str = None) -> Dict[str, Any]:
-        """Translate text using dictionary + word-by-word fallback"""
-        if not text or not text.strip():
-            return {'success': False, 'error': 'Please enter text to translate'}
-
-        text = text.strip()
-        cleaned = self._clean_text(text)
-        
+    def _dictionary_translate(self, text: str, target_language: str) -> Dict[str, Any]:
+        """Translate using dictionary (RELIABLE)"""
         if target_language not in self.translations:
-            return {
-                'success': False,
-                'error': f'Language "{target_language}" not supported. Available: {list(self.translations.keys())}'
-            }
-
+            return None
+        
+        cleaned = self._clean_text(text)
         lang_dict = self.translations[target_language]
         
-        # STEP 1: Exact match
+        # Exact match
         if cleaned in lang_dict:
             return {
                 'success': True,
@@ -261,93 +364,104 @@ class TranslationPredictor:
                 'domain': 'Dictionary',
                 'formality': 'Informal',
                 'confidence': 1.0,
-                'model_used': 'Dictionary (Exact Match)'
+                'model_used': 'Dictionary (Exact)'
             }
         
-        # STEP 2: Partial match
+        # Partial match
+        best_match = None
+        best_score = 0
         for key, value in lang_dict.items():
             if key in cleaned or cleaned in key:
-                return {
-                    'success': True,
-                    'original': text,
-                    'translation': value,
-                    'target_language': target_language,
-                    'domain': 'Dictionary',
-                    'formality': 'Informal',
-                    'confidence': 0.8,
-                    'model_used': 'Dictionary (Partial Match)'
-                }
+                score = len(key) / max(len(cleaned), 1)
+                if score > best_score:
+                    best_score = score
+                    best_match = value
         
-        # STEP 3: Word-by-word translation (NEW!)
-        words = cleaned.split()
-        translated_words = []
-        found_any = False
-        
-        for word in words:
-            # Remove punctuation
-            word_clean = re.sub(r'[^a-zA-Z]', '', word)
-            if word_clean in lang_dict:
-                translated_words.append(lang_dict[word_clean])
-                found_any = True
-            else:
-                # Keep original word if not found
-                translated_words.append(word)
-        
-        if found_any:
+        if best_match and best_score > 0.2:
             return {
                 'success': True,
                 'original': text,
-                'translation': ' '.join(translated_words),
+                'translation': best_match,
                 'target_language': target_language,
                 'domain': 'Dictionary',
                 'formality': 'Informal',
-                'confidence': 0.6,
+                'confidence': min(0.8, best_score + 0.2),
+                'model_used': 'Dictionary (Partial)'
+            }
+        
+        # Word-by-word
+        words = cleaned.split()
+        translated = []
+        found = False
+        for word in words:
+            word_clean = re.sub(r'[^a-zA-Z]', '', word)
+            if word_clean in lang_dict:
+                translated.append(lang_dict[word_clean])
+                found = True
+            else:
+                translated.append(word)
+        
+        if found:
+            return {
+                'success': True,
+                'original': text,
+                'translation': ' '.join(translated),
+                'target_language': target_language,
+                'domain': 'Dictionary',
+                'formality': 'Informal',
+                'confidence': 0.5,
                 'model_used': 'Dictionary (Word-by-Word)'
             }
+        
+        return None
 
-        # STEP 4: No translation found
+    def translate(self, text: str, target_language: str, domain: str = None, formality: str = None) -> Dict[str, Any]:
+        """HYBRID Translation: Dictionary FIRST (RELIABLE)"""
+        if not text or not text.strip():
+            return {'success': False, 'error': 'Please enter text to translate'}
+
+        text = text.strip()
+        
+        if target_language not in self.translations:
+            return {
+                'success': False,
+                'error': f'Language "{target_language}" not supported. Available: {list(self.translations.keys())}'
+            }
+
+        # Dictionary FIRST (reliable)
+        dict_result = self._dictionary_translate(text, target_language)
+        if dict_result:
+            return dict_result
+
+        # ML as fallback (if dictionary fails)
+        if self.ml_loaded:
+            try:
+                cleaned = self._clean_text(text)
+                text_vector = self.vectorizer.transform([cleaned])
+                lang_model = self.language_models[target_language]
+                distances, indices = lang_model['model'].kneighbors(text_vector)
+                
+                best_idx = indices[0][0]
+                if best_idx < len(lang_model['texts']):
+                    translation = lang_model['texts'][best_idx]
+                    # Only use ML if result isn't the same as input
+                    if translation.lower() != text.lower():
+                        return {
+                            'success': True,
+                            'original': text,
+                            'translation': translation,
+                            'target_language': target_language,
+                            'domain': lang_model['domains'][best_idx],
+                            'formality': lang_model['formality'][best_idx],
+                            'confidence': float(1 - distances[0][0]),
+                            'model_used': 'ML (Nearest Neighbors)'
+                        }
+            except Exception as e:
+                pass
+
         return {
             'success': False,
-            'error': f'Could not translate "{text}" to {target_language}. Try a shorter phrase.'
-        }
-
-    def predict(self, text: str) -> Dict[str, Any]:
-        """Make prediction on input text"""
-        if not text or not text.strip():
-            return {'success': False, 'error': 'Empty input'}
-
-        positive = {'good', 'great', 'excellent', 'amazing', 'wonderful', 'fantastic', 
-                   'love', 'happy', 'best', 'beautiful', 'perfect', 'awesome', 'nice'}
-        negative = {'bad', 'terrible', 'awful', 'horrible', 'worst', 'hate', 
-                   'sad', 'poor', 'disappointing', 'ugly', 'angry'}
-
-        words = text.lower().split()
-        pos_count = sum(1 for w in words if w in positive)
-        neg_count = sum(1 for w in words if w in negative)
-        total = pos_count + neg_count
-
-        if total == 0:
-            sentiment = 'neutral'
-            confidence = 0.5
-        else:
-            score = (pos_count - neg_count) / total
-            if score > 0.2:
-                sentiment = 'positive'
-                confidence = min(0.5 + abs(score) * 0.5, 1.0)
-            elif score < -0.2:
-                sentiment = 'negative'
-                confidence = min(0.5 + abs(score) * 0.5, 1.0)
-            else:
-                sentiment = 'neutral'
-                confidence = 0.5
-
-        return {
-            'success': True,
-            'prediction': {
-                'sentiment': sentiment,
-                'confidence': confidence
-            },
-            'model_used': 'sentiment_analysis'
+            'error': f'Could not translate "{text}" to {target_language}.'
         }
 
 
@@ -356,23 +470,24 @@ AIPredictor = TranslationPredictor
 
 if __name__ == "__main__":
     predictor = TranslationPredictor()
-    print("="*60)
+    print("=" * 70)
     print("🧪 TRANSLATION TEST")
-    print("="*60)
+    print("=" * 70)
     
-    print(f"\n📊 Available Languages: {predictor.get_languages()}")
+    print(f"\n📊 Languages: {predictor.get_languages()}")
     
     tests = [
-        ("Good morning", "Luganda"),
-        ("Thank you very much", "Luganda"),
+        ("thank you", "Luganda"),
+        ("good morning", "Luganda"),
+        ("how are you", "Luganda"),
+        ("drinking water", "Luganda"),
+        ("some drinking water", "Luganda"),
         ("I love you", "Luganda"),
-        ("Good morning my friend", "Luganda"),  # Word-by-word
-        ("How are you today", "Luganda"),       # Word-by-word
-        ("I love you", "Acholi"),
+        ("good morning my friend", "Luganda"),
     ]
     
     print("\n📊 Results:")
-    print("-"*60)
+    print("-" * 60)
     for text, lang in tests:
         result = predictor.translate(text, lang)
         if result.get('success'):

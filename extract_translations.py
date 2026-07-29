@@ -50,4 +50,4 @@ for lang, trans in translations.items():
 with open('models/translations.json', 'w') as f:
     json.dump(translations, f, indent=2, ensure_ascii=False)
 
-print("\n✅ Translations saved to models/translations.json")
+print("\n✅ Translations saved to models/translations.json")cd

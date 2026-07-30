@@ -1,197 +1,98 @@
 {% extends "base.html" %}
 
-<<<<<<< HEAD
-{% block title %}UgTalk - Home{% endblock %}
-
-{% block content %}
-<!-- ============================================================
-    HERO SECTION
-============================================================ -->
-<div class="hero-section text-center py-5 mb-4">
-    <div class="hero-icon mb-3">
-        <i class="fas fa-language text-success"></i>
-    </div>
-    <h1 class="display-3 fw-bold">
-        UgTalk
-    </h1>
-    <p class="lead fs-4">AI-Powered Ugandan Language Translator</p>
-    <p class="text-muted fs-5">Translate English to <strong>7+ Ugandan languages</strong> instantly</p>
-    <hr class="w-50 mx-auto">
-</div>
-
-<!-- ============================================================
-    STATS CARDS
-============================================================ -->
-<div class="row g-4 mb-5">
-    <div class="col-md-3 col-6">
-        <div class="stat-card-home bg-primary">
-            <div class="stat-icon-home">
-                <i class="fas fa-database"></i>
-            </div>
-            <div class="stat-content-home">
-                <div class="stat-number">{{ stats.total_samples if stats else 0 }}</div>
-                <div class="stat-label">Translation Records</div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-6">
-        <div class="stat-card-home bg-success">
-            <div class="stat-icon-home">
-                <i class="fas fa-language"></i>
-            </div>
-            <div class="stat-content-home">
-                <div class="stat-number">{{ stats.languages if stats else 0 }}</div>
-                <div class="stat-label">Languages</div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-6">
-        <div class="stat-card-home bg-warning">
-            <div class="stat-icon-home">
-                <i class="fas fa-tags"></i>
-            </div>
-            <div class="stat-content-home">
-                <div class="stat-number">{{ stats.domains if stats else 0 }}</div>
-                <div class="stat-label">Domains</div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-6">
-        <div class="stat-card-home bg-danger">
-            <div class="stat-icon-home">
-                <i class="fas fa-robot"></i>
-            </div>
-            <div class="stat-content-home">
-                <div class="stat-number">
-                    <span class="pulse-dot-home"></span> Active
-                </div>
-                <div class="stat-label">AI Model</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================
-    FEATURES CARDS
-============================================================ -->
-<div class="row g-4 mb-5">
-    <div class="col-md-4">
-        <div class="feature-card">
-            <div class="feature-icon bg-primary">
-                <i class="fas fa-language"></i>
-            </div>
-            <h5 class="mt-3">7+ Languages</h5>
-            <p class="text-muted">Luganda, Lusoga, Acholi, Runyankole, Ateso, Lugbara, Rukiga</p>
-            <div class="feature-tags">
-                <span class="badge bg-light text-dark">Luganda</span>
-                <span class="badge bg-light text-dark">Lusoga</span>
-                <span class="badge bg-light text-dark">Acholi</span>
-                <span class="badge bg-light text-dark">+4 more</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="feature-card">
-            <div class="feature-icon bg-success">
-                <i class="fas fa-tag"></i>
-            </div>
-            <h5 class="mt-3">Multiple Domains</h5>
-            <p class="text-muted">Health, Tourism, Business, Education, Agriculture, Government</p>
-            <div class="feature-tags">
-                <span class="badge bg-light text-dark">Health</span>
-                <span class="badge bg-light text-dark">Tourism</span>
-                <span class="badge bg-light text-dark">Business</span>
-                <span class="badge bg-light text-dark">+3 more</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="feature-card">
-            <div class="feature-icon bg-warning">
-                <i class="fas fa-clock"></i>
-            </div>
-            <h5 class="mt-3">Real-time Translation</h5>
-            <p class="text-muted">Instant AI-powered translations with confidence scores</p>
-            <div class="feature-tags">
-                <span class="badge bg-success text-white">⚡ Instant</span>
-                <span class="badge bg-info text-white">📊 94% Accuracy</span>
-                <span class="badge bg-primary text-white">🤖 AI Powered</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================
-    CALL TO ACTION
-============================================================ -->
-<div class="row">
-    <div class="col-12 text-center">
-        <div class="cta-section p-5 rounded-4">
-            <h3 class="mb-3">Ready to Translate?</h3>
-            <p class="text-muted mb-4">Start translating English to Ugandan languages now</p>
-            <div>
-                <a href="/translate" class="btn btn-success btn-lg px-5">
-                    <i class="fas fa-language me-2"></i>Start Translating
-                </a>
-                <a href="/dashboard" class="btn btn-outline-primary btn-lg px-4 ms-2">
-                    <i class="fas fa-chart-bar me-2"></i>View Dashboard
-                </a>
-=======
-{% block title %}Home - VisionLens AI 💖{% endblock %}
+{% block title %}Home - UgTalk & VisionLens AI{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <!-- Hero Section -->
-    <div class="hero-section">
-        <p class="eyebrow"> Welcome to the future </p>
-        <h1 class="hero-title">See what your data<br>is saying </h1>
-        <p class="hero-subtitle">VisionLens AI turns text and images into clear, useful signals in seconds. Let's make something amazing! </p>
+    <div class="text-center mb-5">
+        <h1 class="display-3 fw-bold">
+            <i class="fas fa-robot text-primary"></i>
+            <i class="fas fa-language text-success ms-2"></i>
+            AI-Powered Web Service
+        </h1>
+        <p class="lead mt-3">
+            UgTalk Translation + VisionLens AI Analysis
+        </p>
+        <p class="text-muted">
+            Translate to Ugandan languages • Analyze sentiment • Classify text • Detect spam
+        </p>
+        <hr class="w-50 mx-auto">
     </div>
 
-    <!-- Feature Cards -->
-    <div class="row mb-5">
-        <div class="col-md-4 mb-4">
-            <div class="feature-card">
-                <span class="feature-icon">🤖</span>
-                <h5 class="card-title">AI-Powered</h5>
-                <p class="card-text">Advanced machine learning models for super accurate predictions</p>
+    <!-- Stats Cards -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-3 col-6">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h2 class="text-primary">7</h2>
+                    <p>Languages</p>
+                </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="feature-card">
-                <span class="feature-icon">⚡</span>
-                <h5 class="card-title">Fast & Easy</h5>
-                <p class="card-text">Get instant results with our super user-friendly interface</p>
+        <div class="col-md-3 col-6">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h2 class="text-success">3</h2>
+                    <p>AI Models</p>
+                </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="feature-card">
-                <span class="feature-icon">🔒</span>
-                <h5 class="card-title">Secure</h5>
-                <p class="card-text">Your data is processed securely and privately, always </p>
+        <div class="col-md-3 col-6">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h2 class="text-warning">7</h2>
+                    <p>Domains</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h2 class="text-danger">AI</h2>
+                    <p>Powered</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Main Feature Section - Text Analysis -->
+    <!-- UgTalk Translation Card -->
     <div class="row mb-5">
         <div class="col-md-8 offset-md-2">
-            <div class="card">
-                <div class="card-header">
-                    <h3> Text Intelligence Studio</h3>
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h4><i class="fas fa-language me-2"></i>UgTalk Translator</h4>
+                </div>
+                <div class="card-body text-center">
+                    <p class="card-text">Translate English to 7 Ugandan languages instantly!</p>
+                    <a href="/translate" class="btn btn-success">
+                        <i class="fas fa-language me-2"></i>Start Translating
+                    </a>
+                    <a href="/history" class="btn btn-outline-secondary ms-2">
+                        <i class="fas fa-history me-2"></i>View History
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Text Analysis Section -->
+    <div class="row mb-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4><i class="fas fa-robot me-2"></i>Text Intelligence Studio</h4>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">
-                        Choose an AI model, type in your text, and get an instant analysis! 
-                    </p>
+                    <p>Choose an AI model, type in your text, and get an instant analysis!</p>
                     
                     <form id="predictionForm">
                         <div class="mb-3">
-                            <label for="modelSelect" class="form-label">Choose your AI model </label>
+                            <label for="modelSelect" class="form-label">Choose your AI model</label>
                             <select class="form-select" id="modelSelect">
-                                <option value="sentiment_analysis">😊 Sentiment Analysis</option>
-                                <option value="text_classification">📂 Text Classification</option>
-                                <option value="spam_detection">🚫 Spam Detection</option>
+                                <option value="sentiment_analysis"> Sentiment Analysis</option>
+                                <option value="text_classification"> Text Classification</option>
+                                <option value="spam_detection"> Spam Detection</option>
                             </select>
                         </div>
 
@@ -200,28 +101,25 @@
                             <textarea 
                                 class="form-control" 
                                 id="inputText" 
-                                rows="5" 
+                                rows="4" 
                                 placeholder="Type or paste your text here... (max 1000 characters)"
-                                required
                             ></textarea>
-                            <div class="form-text">
-                                Maximum 1000 characters
-                            </div>
+                            <div class="form-text">Maximum 1000 characters</div>
                         </div>
                         
                         <button type="submit" class="btn btn-primary" id="predictBtn">
-                            <span id="btnText"> Analyze Text </span>
-                            <span id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            <span id="btnText">Analyze Text</span>
+                            <span id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
                         </button>
                         <button type="button" class="btn btn-secondary ms-2" id="clearBtn">
-                            🗑️ Clear
+                            Clear
                         </button>
                     </form>
 
                     <!-- Text Results -->
                     <div id="results" class="mt-4 d-none">
-                        <div class="alert" role="alert">
-                            <h4 class="alert-heading"> Analysis Complete!</h4>
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">Analysis Complete!</h4>
                             <hr>
                             <div id="resultContent"></div>
                         </div>
@@ -233,24 +131,26 @@
                     <form id="imageForm">
                         <div class="mb-3">
                             <label for="imageFile" class="form-label">Or analyze an image 📸</label>
-                            <input class="form-control" type="file" id="imageFile" accept="image/*" required>
+                            <input class="form-control" type="file" id="imageFile" accept="image/*">
                             <div class="form-text">Upload a clear JPG, PNG, or GIF image.</div>
                         </div>
-                        <button type="submit" class="btn btn-outline-primary" id="imageBtn"> Analyze Image</button>
+                        <button type="submit" class="btn btn-outline-primary" id="imageBtn">
+                            Analyze Image
+                        </button>
                     </form>
 
                     <!-- Image Results -->
                     <div id="imageResults" class="mt-4 d-none">
-                        <div class="alert" role="alert">
-                            <h4 class="alert-heading">🖼️ Image Analysis</h4>
+                        <div class="alert alert-info" role="alert">
+                            <h4 class="alert-heading">Image Analysis</h4>
                             <div id="imageResultContent"></div>
                         </div>
                     </div>
                     
                     <!-- Error Section -->
                     <div id="error" class="mt-4 d-none">
-                        <div class="alert" role="alert">
-                            <h4 class="alert-heading">😅 Oops!</h4>
+                        <div class="alert alert-danger" role="alert">
+                            <h4 class="alert-heading">Oops!</h4>
                             <p id="errorMessage"></p>
                         </div>
                     </div>
@@ -259,64 +159,87 @@
         </div>
     </div>
 
-    <!-- Available Models Section -->
+    <!-- AI Models Section -->
     <div class="row mb-5">
         <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3> Our AI Models</h3>
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h4><i class="fas fa-cubes me-2"></i>Our AI Models</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 mb-3">
-                            <div class="feature-card" style="height: 100%;">
-                                <div class="card-body">
-                                    <h5 class="card-title">😊 Sentiment Analysis</h5>
-                                    <p class="card-text">
-                                        Analyzes text to determine if it's positive, negative, or neutral!
-                                    </p>
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <h5> Sentiment Analysis</h5>
+                                    <p class="text-muted">Analyzes text to determine if it's positive, negative, or neutral</p>
                                     <span class="badge bg-primary">NLP</span>
                                     <span class="badge bg-success">85% Accuracy</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <div class="feature-card" style="height: 100%;">
-                                <div class="card-body">
-                                    <h5 class="card-title">📂 Text Classification</h5>
-                                    <p class="card-text">
-                                        Classifies text into categories like tech, sports, politics, etc!
-                                    </p>
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <h5> Text Classification</h5>
+                                    <p class="text-muted">Classifies text into categories like tech, sports, politics, etc</p>
                                     <span class="badge bg-primary">NLP</span>
                                     <span class="badge bg-success">80% Accuracy</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <div class="feature-card" style="height: 100%;">
-                                <div class="card-body">
-                                    <h5 class="card-title">🚫 Spam Detection</h5>
-                                    <p class="card-text">
-                                        Detects spam messages and suspicious content instantly!
-                                    </p>
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <h5> Spam Detection</h5>
+                                    <p class="text-muted">Detects spam messages and suspicious content instantly</p>
                                     <span class="badge bg-primary">NLP</span>
                                     <span class="badge bg-success">88% Accuracy</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="text-center mt-3">
+                        <a href="/models" class="btn btn-outline-primary">View All Models</a>
+                    </div>
                 </div>
->>>>>>> team-mate/main
             </div>
         </div>
     </div>
+
+    <!-- Call to Action -->
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="/translate" class="btn btn-success btn-lg">
+                <i class="fas fa-language me-2"></i>Start Translating
+            </a>
+            <a href="/models" class="btn btn-outline-primary btn-lg ms-2">
+                <i class="fas fa-robot me-2"></i>AI Models
+            </a>
+            <a href="/history" class="btn btn-outline-secondary btn-lg ms-2">
+                <i class="fas fa-history me-2"></i>History
+            </a>
+            <a href="/dashboard" class="btn btn-outline-warning btn-lg ms-2">
+                <i class="fas fa-chart-bar me-2"></i>Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="row mt-5">
+        <div class="col-12 text-center text-muted small">
+            <p>Group C - RECESS Final Project 2026</p>
+            <p>
+                <a href="/about" class="text-muted">About</a> |
+                <a href="/guide" class="text-muted">Guide</a> |
+                <a href="/api/health" class="text-muted">API Health</a>
+            </p>
+        </div>
+    </div>
 </div>
-<<<<<<< HEAD
-{% endblock %}
-=======
 {% endblock %}
 
-{% block extra_js %}
+{% block scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('predictionForm');
@@ -349,9 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const response = await fetch('/predict', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     text: text,
                     type: 'text',
@@ -362,11 +283,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.success) {
                 showResults(data.result);
             } else {
-                showError(data.error || 'An error occurred during prediction.');
+                showError(data.error || 'An error occurred.');
             }
         } catch (err) {
             showError('Network error. Please try again.');
-            console.error('Error:', err);
         } finally {
             setLoading(false);
         }
@@ -375,9 +295,12 @@ document.addEventListener('DOMContentLoaded', function() {
     imageForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         const file = imageFile.files[0];
-        if (!file) return;
+        if (!file) {
+            showError('Please select an image to analyze.');
+            return;
+        }
         imageBtn.disabled = true;
-        imageBtn.textContent = '⏳ Analyzing Image...';
+        imageBtn.textContent = ' Analyzing...';
         imageResults.classList.add('d-none');
         try {
             const formData = new FormData();
@@ -397,15 +320,15 @@ document.addEventListener('DOMContentLoaded', function() {
             ).join('');
             document.getElementById('imageResultContent').innerHTML =
                 '<h5>' + result.description + '</h5>' +
-                '<p><strong>Detected name:</strong> ' + result.top_prediction.label + '</p>' +
+                '<p><strong>Top result:</strong> ' + result.top_prediction.label + '</p>' +
                 '<p><strong>Model:</strong> ' + result.model + '</p>' +
-                '<p><strong>Other likely labels:</strong></p><ul>' + predictions + '</ul>';
+                '<p><strong>Other predictions:</strong></p><ul>' + predictions + '</ul>';
             imageResults.classList.remove('d-none');
         } catch (error) {
             showError(error.message);
         } finally {
             imageBtn.disabled = false;
-            imageBtn.textContent = '🖼️ Analyze Image';
+            imageBtn.textContent = 'Analyze Image';
         }
     });
     
@@ -418,45 +341,37 @@ document.addEventListener('DOMContentLoaded', function() {
     function showResults(result) {
         const resultContent = document.getElementById('resultContent');
         const prediction = result.prediction || result;
-        let html;
+        let html = '';
         if (prediction.sentiment) {
-            const emoji = prediction.sentiment === 'positive' ? '😊' : (prediction.sentiment === 'negative' ? '😔' : '😐');
-            html = '<h5>' + emoji + ' Sentiment: <span class="badge bg-' + getSentimentColor(prediction.sentiment) + '">' +
+            const emoji = prediction.sentiment === 'positive' ? '' : 
+                         (prediction.sentiment === 'negative' ? '' : '');
+            html = '<h5>' + emoji + ' Sentiment: <span class="badge bg-' + 
+                   (prediction.sentiment === 'positive' ? 'success' : 
+                    prediction.sentiment === 'negative' ? 'danger' : 'warning') + '">' +
                    prediction.sentiment.toUpperCase() + '</span></h5>';
             html += '<p><strong>Score:</strong> ' + prediction.score + '</p>';
         } else if (prediction.category) {
-            html = '<h5>📂 Category: <span class="badge bg-primary">' +
+            html = '<h5>Category: <span class="badge bg-primary">' +
                    prediction.category.toUpperCase() + '</span></h5>';
         } else if (typeof prediction.is_spam === 'boolean') {
-            html = '<h5>🚫 Spam status: <span class="badge bg-' +
+            html = '<h5>Spam status: <span class="badge bg-' +
                    (prediction.is_spam ? 'danger' : 'success') + '">' +
-                   (prediction.is_spam ? '🚨 SPAM' : '✅ NOT SPAM') + '</span></h5>';
+                   (prediction.is_spam ? '🚨 SPAM' : 'NOT SPAM') + '</span></h5>';
             html += '<p><strong>Spam score:</strong> ' + prediction.spam_score + '</p>';
-        } else {
-            html = '<p>No prediction details were returned.</p>';
         }
         html += '<p><strong>Confidence:</strong> ' + (prediction.confidence * 100).toFixed(1) + '%</p>';
-        html += '<hr>';
-        html += '<p><strong>Model Used:</strong> ' + (result.model_type || 'ML Model') + '</p>';
+        if (result.model_used) {
+            html += '<p><strong>Model Used:</strong> ' + result.model_used + '</p>';
+        }
         resultContent.innerHTML = html;
         results.classList.remove('d-none');
-        
-        const history = JSON.parse(localStorage.getItem('visionlens-history') || '[]');
-        history.unshift({
-            model: result.model_used || 'Text analysis',
-            label: prediction.sentiment || prediction.category || (prediction.is_spam ? 'Spam detected' : 'Not spam'),
-            input: inputText.value.trim().slice(0, 90),
-            time: new Date().toLocaleString()
-        });
-        localStorage.setItem('visionlens-history', JSON.stringify(history.slice(0, 12)));
-        results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        results.scrollIntoView({ behavior: 'smooth' });
     }
     
     function showError(message) {
-        const errorMessage = document.getElementById('errorMessage');
-        errorMessage.textContent = message;
+        document.getElementById('errorMessage').textContent = message;
         error.classList.remove('d-none');
-        error.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        error.scrollIntoView({ behavior: 'smooth' });
     }
     
     function hideResults() {
@@ -470,25 +385,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function setLoading(loading) {
         const btnText = document.getElementById('btnText');
         const btnSpinner = document.getElementById('btnSpinner');
-        if (loading) {
-            predictBtn.disabled = true;
-            btnText.textContent = '⏳ Analyzing...';
-            btnSpinner.classList.remove('d-none');
-        } else {
-            predictBtn.disabled = false;
-            btnText.textContent = '✨ Analyze Text ✨';
-            btnSpinner.classList.add('d-none');
-        }
-    }
-    
-    function getSentimentColor(sentiment) {
-        switch(sentiment) {
-            case 'positive': return 'success';
-            case 'negative': return 'danger';
-            default: return 'warning';
-        }
+        predictBtn.disabled = loading;
+        btnText.textContent = loading ? ' Analyzing...' : 'Analyze Text';
+        btnSpinner.classList.toggle('d-none', !loading);
     }
 });
 </script>
 {% endblock %}
->>>>>>> team-mate/main

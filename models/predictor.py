@@ -1,13 +1,23 @@
 """
-<<<<<<< HEAD
-models/predictor.py - PURE ML Translation
-Uses ONLY .pkl models trained on the dataset. NO dictionary!
+models/predictor.py - Combined AI Predictor
+Group C - RECESS Final Project 2026
+Includes: Translation (Pure ML) + Sentiment Analysis + Text Classification + Spam Detection
 """
 
 import os
 import joblib
 import re
+import pickle
+import numpy as np
 from typing import Dict, Any, List
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+# ============================================================
+# PART 1: TRANSLATION PREDICTOR (PURE ML)
+# ============================================================
 
 class TranslationPredictor:
     """PURE ML Translation - Uses ONLY .pkl models!"""
@@ -41,7 +51,7 @@ class TranslationPredictor:
             
             for f in required_files:
                 if not os.path.exists(os.path.join(model_dir, f)):
-                    print(f" Missing: {f}")
+                    print(f"⚠️ Missing: {f}")
                     return
             
             self.vectorizer = joblib.load(f'{model_dir}/vectorizer.pkl')
@@ -51,10 +61,10 @@ class TranslationPredictor:
             self.le_formality = joblib.load(f'{model_dir}/le_formality.pkl')
             self.training_data = joblib.load(f'{model_dir}/training_data.pkl')
             
-            print(f"PURE ML loaded: {len(self.language_models)} languages")
+            print(f"✅ PURE ML loaded: {len(self.language_models)} languages")
             
         except Exception as e:
-            print(f"❌ Error: {e}")
+            print(f"❌ Error loading models: {e}")
 
     def _init_models(self):
         """Initialize models"""
@@ -88,7 +98,6 @@ class TranslationPredictor:
         if not self.is_loaded:
             return {'status': 'not_loaded'}
         
-        # FIX: Check if training_data is not None, then get length
         total_samples = 0
         if self.training_data is not None:
             total_samples = len(self.training_data)
@@ -148,43 +157,9 @@ class TranslationPredictor:
             return {'success': False, 'error': f'Translation error: {str(e)}'}
 
 
-AIPredictor = TranslationPredictor
-
-
-if __name__ == "__main__":
-    predictor = TranslationPredictor()
-    print("=" * 60)
-    print(" PURE ML TRANSLATION TEST")
-    print("=" * 60)
-    
-    if not predictor.is_loaded:
-        print("Model not loaded. Run Jupyter notebook first.")
-        exit()
-    
-    print(f"\n Languages: {predictor.get_languages()}")
-    print(f" Samples: {predictor.get_stats()['total_samples']}")
-    
-    tests = ["Thank you", "Good morning", "I love you", "drinking water"]
-    
-    for text in tests:
-        result = predictor.translate(text, "Luganda")
-        if result.get('success'):
-            print(f"\n '{text}' → {result['translation']}")
-            print(f"   Confidence: {result['confidence']:.2%}")
-        else:
-            print(f"\n'{text}' → {result.get('error')}")
-=======
-AI Predictor Module
-Handles AI model loading and prediction
-"""
-
-import os
-import pickle
-import numpy as np
-from typing import Dict, Any, List
-import logging
-
-logger = logging.getLogger(__name__)
+# ============================================================
+# PART 2: GENERAL AI PREDICTOR (Sentiment, Spam, Classification)
+# ============================================================
 
 class AIPredictor:
     """
@@ -210,9 +185,6 @@ class AIPredictor:
         # Create model directory if it doesn't exist
         os.makedirs(model_path, exist_ok=True)
         
-        # Try to load existing models
-        # For demo purposes, we'll use simple rule-based models
-        # In production, load actual trained models
         logger.info("Loading AI models...")
         
         # Initialize simple models (can be replaced with trained models)
@@ -224,13 +196,14 @@ class AIPredictor:
         
         logger.info("Models loaded successfully")
     
-    def predict(self, input_text: str, input_type: str = 'text') -> Dict[str, Any]:
+    def predict(self, input_text: str, input_type: str = 'text', model_name: str = 'sentiment_analysis') -> Dict[str, Any]:
         """
         Make prediction based on input
         
         Args:
             input_text: Input text to process
             input_type: Type of input (text, image, etc.)
+            model_name: Name of the model to use
         
         Returns:
             Dictionary containing prediction results
@@ -242,13 +215,12 @@ class AIPredictor:
                     'success': False
                 }
             
-            # Select appropriate model based on input type
-            if input_type == 'text':
-                # Use sentiment analysis by default
-                result = self._sentiment_analyzer(input_text)
+            # Select appropriate model
+            if model_name in self.models:
+                result = self.models[model_name](input_text)
             else:
                 result = {
-                    'error': f'Unsupported input type: {input_type}',
+                    'error': f'Unsupported model: {model_name}',
                     'success': False
                 }
             
@@ -256,7 +228,7 @@ class AIPredictor:
                 'success': True,
                 'input': input_text[:100] + '...' if len(input_text) > 100 else input_text,
                 'prediction': result,
-                'model_used': 'sentiment_analysis'
+                'model_used': model_name
             }
         
         except Exception as e:
@@ -267,11 +239,7 @@ class AIPredictor:
             }
     
     def _sentiment_analyzer(self, text: str) -> Dict[str, Any]:
-        """
-        Simple sentiment analysis using keyword matching
-        In production, replace with trained ML model
-        """
-        # Positive and negative word lists
+        """Simple sentiment analysis using keyword matching"""
         positive_words = [
             'good', 'great', 'excellent', 'amazing', 'wonderful', 'fantastic',
             'love', 'happy', 'best', 'beautiful', 'perfect', 'awesome',
@@ -284,15 +252,12 @@ class AIPredictor:
             'angry', 'frustrated', 'annoying', 'useless', 'garbage'
         ]
         
-        # Convert to lowercase for matching
         text_lower = text.lower()
         words = text_lower.split()
         
-        # Count positive and negative words
         positive_count = sum(1 for word in words if word in positive_words)
         negative_count = sum(1 for word in words if word in negative_words)
         
-        # Calculate sentiment score
         total = positive_count + negative_count
         if total == 0:
             sentiment = 'neutral'
@@ -319,10 +284,7 @@ class AIPredictor:
         }
     
     def _text_classifier(self, text: str) -> Dict[str, Any]:
-        """
-        Simple text classification
-        In production, replace with trained ML model
-        """
+        """Simple text classification"""
         categories = {
             'technology': ['computer', 'software', 'code', 'programming', 'tech', 'data'],
             'sports': ['game', 'team', 'player', 'score', 'win', 'championship'],
@@ -337,7 +299,6 @@ class AIPredictor:
             score = sum(1 for keyword in keywords if keyword in text_lower)
             scores[category] = score
         
-        # Get category with highest score
         if max(scores.values()) > 0:
             predicted_category = max(scores, key=scores.get)
             confidence = min(scores[predicted_category] * 0.2, 1.0)
@@ -352,10 +313,7 @@ class AIPredictor:
         }
     
     def _spam_detector(self, text: str) -> Dict[str, Any]:
-        """
-        Simple spam detection
-        In production, replace with trained ML model
-        """
+        """Simple spam detection"""
         spam_indicators = [
             'free', 'winner', 'click here', 'buy now', 'limited time',
             'act now', 'congratulations', 'you won', 'prize', 'urgent',
@@ -365,7 +323,6 @@ class AIPredictor:
         text_lower = text.lower()
         spam_count = sum(1 for indicator in spam_indicators if indicator in text_lower)
         
-        # Calculate spam probability
         spam_score = min(spam_count * 0.15, 1.0)
         is_spam = spam_score > 0.5
         
@@ -403,4 +360,11 @@ class AIPredictor:
         }
         
         return model_info.get(model_name, {})
->>>>>>> team-mate/main
+
+
+# ============================================================
+# BACKWARDS COMPATIBILITY
+# ============================================================
+
+# For UgTalk translator
+AIPredictor = TranslationPredictor  # Keep both names for compatibility

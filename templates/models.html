@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Models - VisionLens AI 💖{% endblock %}
+
+{% block content %}
+<div class="container mt-5 page-shell">
+    <div class="page-heading text-center">
+        <p class="eyebrow"> The toolkit</p>
+        <h1>Three ways to make sense of input </h1>
+        <p class="lead">Choose the model that matches the question you are asking! </p>
+    </div>
+    <div class="row g-4 mt-4">
+        <div class="col-md-4">
+            <div class="card model-card h-100">
+                <div class="card-body">
+                    <span class="model-number">01</span>
+                    <h3>😊 Sentiment analysis</h3>
+                    <p>Reads the emotional tone of a message and returns positive, negative, or neutral with a confidence score.</p>
+                    <span class="badge bg-primary">💬 Text</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card model-card h-100">
+                <div class="card-body">
+                    <span class="model-number">02</span>
+                    <h3>📂 Topic classification</h3>
+                    <p>Routes a message into a useful category such as technology, sports, politics, or entertainment.</p>
+                    <span class="badge bg-primary">💬 Text</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card model-card h-100">
+                <div class="card-body">
+                    <span class="model-number">03</span>
+                    <h3>🖼️ Image recognition</h3>
+                    <p>Compares an uploaded picture against natural labels and returns the most likely visual match.</p>
+                    <span class="badge bg-success">📸 Image</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-cta mt-5">
+        <div>
+            <p class="eyebrow"> Ready when you are </p>
+            <h2>Bring an idea, sentence, or picture! </h2>
+        </div>
+        <a href="/" class="btn"> Open the studio</a>
+    </div>
+</div>
+{% endblock %}

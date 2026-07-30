@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+<<<<<<< HEAD
 {% block title %}UgTalk - Translation History{% endblock %}
 
 {% block content %}
@@ -168,11 +169,39 @@
                     </button>
                 </form>
             </div>
+=======
+{% block title %}History - VisionLens AI 💖{% endblock %}
+
+{% block content %}
+<div class="container mt-5 page-shell">
+    <div class="page-heading">
+        <p class="eyebrow">💗 Your workspace</p>
+        <h1>Recent activity 📜</h1>
+        <p class="lead">Your text analyses and translations all in one place! </p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="d-flex gap-2 mb-4 mt-3">
+        <button class="btn btn-primary btn-sm" data-filter="all"> All</button>
+        <button class="btn btn-secondary btn-sm" data-filter="text-analysis"> Text Analysis</button>
+        <button class="btn btn-secondary btn-sm" data-filter="translation"> Translation</button>
+        <button class="btn btn-outline-danger btn-sm ms-auto" id="clearAllBtn"> Clear All</button>
+    </div>
+
+    <div id="historyList" class="history-list mt-4"></div>
+    <div id="emptyHistory" class="empty-state mt-5">
+        <h3> No activity yet...</h3>
+        <p>Run a text analysis or a translation and it will appear here! Let's get started! </p>
+        <div class="d-flex gap-2 justify-content-center">
+            <a href="/" class="btn btn-primary"> Text Analysis</a>
+            <a href="/translate" class="btn btn-primary"> Translate</a>
+>>>>>>> team-mate/main
         </div>
     </div>
 </div>
 {% endblock %}
 
+<<<<<<< HEAD
 <!-- ============================================================
     SCRIPTS
 ============================================================ -->
@@ -210,3 +239,120 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 {% endblock %}
+=======
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const list = document.getElementById('historyList');
+    const empty = document.getElementById('emptyHistory');
+    const filterBtns = document.querySelectorAll('[data-filter]');
+    const clearAllBtn = document.getElementById('clearAllBtn');
+    let currentFilter = 'all';
+
+    function loadHistory() {
+        // Fetch text analysis history
+        const textHistory = JSON.parse(localStorage.getItem('visionlens-history') || '[]').map(item => ({
+            ...item,
+            type: 'text-analysis',
+            badgeClass: 'text-analysis',
+            badgeText: 'Text Analysis'
+        }));
+
+        // Fetch translation history
+        const translationHistory = JSON.parse(localStorage.getItem('visionlens-translation-history') || '[]').map(item => ({
+            ...item,
+            type: 'translation',
+            badgeClass: 'translation',
+            badgeText: 'Translation'
+        }));
+
+        // Merge, sort by time (newest first)
+        const all = [...textHistory, ...translationHistory].sort((a, b) => {
+            const timeA = new Date(a.time);
+            const timeB = new Date(b.time);
+            return timeB - timeA;
+        });
+
+        if (all.length === 0) {
+            list.innerHTML = '';
+            empty.classList.remove('d-none');
+            return;
+        }
+        empty.classList.add('d-none');
+
+        // Filter
+        const filtered = currentFilter === 'all' ? all : all.filter(item => item.type === currentFilter);
+
+        if (filtered.length === 0) {
+            list.innerHTML = `<p class="text-muted text-center mt-4">No ${currentFilter.replace('-', ' ')} entries found.</p>`;
+            return;
+        }
+
+        list.innerHTML = filtered.map((item, idx) => {
+            if (item.type === 'text-analysis') {
+                return `
+                    <article class="history-item">
+                        <div>
+                            <span class="history-badge ${item.badgeClass}">${item.badgeText}</span>
+                            <span class="eyebrow ms-2">${item.model}</span>
+                            <h3>${item.label}</h3>
+                            <p>${item.input}</p>
+                        </div>
+                        <time>${item.time}</time>
+                    </article>
+                `;
+            } else {
+                // translation
+                return `
+                    <article class="history-item">
+                        <div>
+                            <span class="history-badge ${item.badgeClass}">${item.badgeText}</span>
+                            <span class="eyebrow ms-2">${item.language}</span>
+                            <h3>${item.translation}</h3>
+                            <p>${item.original} <span class="text-muted">· ${item.confidence}% confidence</span></p>
+                        </div>
+                        <time>${item.time}</time>
+                    </article>
+                `;
+            }
+        }).join('');
+    }
+
+    // Filter buttons
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            currentFilter = this.dataset.filter;
+            filterBtns.forEach(b => b.className = 'btn btn-sm ' + (b.dataset.filter === 'btn-secondary' ? 'btn-secondary' : ''));
+            this.classList.remove('btn-secondary');
+            this.classList.add('btn-primary');
+            if (currentFilter === 'all') {
+                // Reset active style for all button
+                filterBtns.forEach(b => {
+                    if (b.dataset.filter === 'all') b.className = 'btn btn-primary btn-sm';
+                    else b.className = 'btn btn-secondary btn-sm';
+                });
+            }
+            // Simple approach: just re-style
+            filterBtns.forEach(b => {
+                b.className = b.dataset.filter === currentFilter ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm';
+            });
+            loadHistory();
+        });
+    });
+
+    // Clear all history
+    clearAllBtn.addEventListener('click', function() {
+        if (confirm('Clear all history (text analyses and translations)?')) {
+            localStorage.removeItem('visionlens-history');
+            localStorage.removeItem('visionlens-translation-history');
+            loadHistory();
+        }
+    });
+
+    // Initial load
+    loadHistory();
+});
+</script>
+{% endblock %}
+
+>>>>>>> team-mate/main

@@ -1,0 +1,2018 @@
+[
+  {
+    "input": "thank you",
+    "output": "Webale nnyo",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Webale nnyo",
+    "output": "thank you",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "thanks",
+    "output": "Webale",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Webale",
+    "output": "thanks",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "good morning",
+    "output": "Wasuze otya",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Wasuze otya",
+    "output": "good morning",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "good afternoon",
+    "output": "Osiibye otya",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Osiibye otya",
+    "output": "good afternoon",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "good evening",
+    "output": "Osiibye otya",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Osiibye otya",
+    "output": "good evening",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "welcome",
+    "output": "Tukusanyukidde",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Tukusanyukidde",
+    "output": "welcome",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "hello",
+    "output": "Ki kati",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ki kati",
+    "output": "hello",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "hi",
+    "output": "Ki kati",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ki kati",
+    "output": "hi",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "goodbye",
+    "output": "Weeraba",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Weeraba",
+    "output": "goodbye",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "bye",
+    "output": "Weeraba",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Weeraba",
+    "output": "bye",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "open the door",
+    "output": "Ggulawo oluggi",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ggulawo oluggi",
+    "output": "open the door",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "close the door",
+    "output": "Ggalawo oluggi",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ggalawo oluggi",
+    "output": "close the door",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "how are you",
+    "output": "Oli otya",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Oli otya",
+    "output": "how are you",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "i am fine",
+    "output": "Ndi bulungi",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ndi bulungi",
+    "output": "i am fine",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "i am okay",
+    "output": "Ndi bulungi",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ndi bulungi",
+    "output": "i am okay",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "what is your name",
+    "output": "Erinnya lyo ani",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Erinnya lyo ani",
+    "output": "what is your name",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "my name is",
+    "output": "Erinnya lyange",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Erinnya lyange",
+    "output": "my name is",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "yes",
+    "output": "Yee",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Yee",
+    "output": "yes",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "no",
+    "output": "Nedda",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nedda",
+    "output": "no",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "please",
+    "output": "Mwebale",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Mwebale",
+    "output": "please",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "sorry",
+    "output": "Nsonyiwa",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nsonyiwa",
+    "output": "sorry",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "help",
+    "output": "Nnyamba",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nnyamba",
+    "output": "help",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "i need help",
+    "output": "Nneetaaga obuyambi",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Formal"
+  },
+  {
+    "input": "Nneetaaga obuyambi",
+    "output": "i need help",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Formal"
+  },
+  {
+    "input": "where is",
+    "output": "Kiri wa",
+    "language": "Luganda",
+    "domain": "Tourism",
+    "formality": "Informal"
+  },
+  {
+    "input": "Kiri wa",
+    "output": "where is",
+    "language": "Luganda",
+    "domain": "Tourism",
+    "formality": "Informal"
+  },
+  {
+    "input": "how much",
+    "output": "Sente mmeka",
+    "language": "Luganda",
+    "domain": "Business",
+    "formality": "Informal"
+  },
+  {
+    "input": "Sente mmeka",
+    "output": "how much",
+    "language": "Luganda",
+    "domain": "Business",
+    "formality": "Informal"
+  },
+  {
+    "input": "i love you",
+    "output": "Nkwagala",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nkwagala",
+    "output": "i love you",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "good",
+    "output": "Bulungi",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Bulungi",
+    "output": "good",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "bad",
+    "output": "Bibi",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Bibi",
+    "output": "bad",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "today",
+    "output": "Leero",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Leero",
+    "output": "today",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "tomorrow",
+    "output": "Nkya",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nkya",
+    "output": "tomorrow",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "yesterday",
+    "output": "Jjo",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Jjo",
+    "output": "yesterday",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "water",
+    "output": "Amazzi",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Amazzi",
+    "output": "water",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "food",
+    "output": "Emmere",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Emmere",
+    "output": "food",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "hospital",
+    "output": "Eddwaliro",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Formal"
+  },
+  {
+    "input": "Eddwaliro",
+    "output": "hospital",
+    "language": "Luganda",
+    "domain": "Health",
+    "formality": "Formal"
+  },
+  {
+    "input": "police",
+    "output": "Pulisi",
+    "language": "Luganda",
+    "domain": "Government",
+    "formality": "Formal"
+  },
+  {
+    "input": "Pulisi",
+    "output": "police",
+    "language": "Luganda",
+    "domain": "Government",
+    "formality": "Formal"
+  },
+  {
+    "input": "thank you very much",
+    "output": "Webale nnyo",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Webale nnyo",
+    "output": "thank you very much",
+    "language": "Luganda",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "thank you",
+    "output": "Webale",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Webale",
+    "output": "thank you",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "good morning",
+    "output": "Oraare gye",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Oraare gye",
+    "output": "good morning",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "good afternoon",
+    "output": "Osiibye gye",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Osiibye gye",
+    "output": "good afternoon",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "welcome",
+    "output": "Tusiime",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Tusiime",
+    "output": "welcome",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "hello",
+    "output": "Agandi",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Agandi",
+    "output": "hello",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "goodbye",
+    "output": "Nimwe",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nimwe",
+    "output": "goodbye",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "open the door",
+    "output": "Gura omuryango",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Gura omuryango",
+    "output": "open the door",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "how are you",
+    "output": "Oraare gye",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Oraare gye",
+    "output": "how are you",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "i am fine",
+    "output": "Ndi mwe",
+    "language": "Rukiga",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ndi mwe",
+    "output": "i am fine",
+    "language": "Rukiga",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "what is your name",
+    "output": "Ishwa ryawe niiwe",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ishwa ryawe niiwe",
+    "output": "what is your name",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "my name is",
+    "output": "Ishwa ryange nii",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ishwa ryange nii",
+    "output": "my name is",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "yes",
+    "output": "Nee",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nee",
+    "output": "yes",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "no",
+    "output": "Ngangi",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ngangi",
+    "output": "no",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "please",
+    "output": "Mwebale",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Mwebale",
+    "output": "please",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "sorry",
+    "output": "Nsonsiwe",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nsonsiwe",
+    "output": "sorry",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "help",
+    "output": "Nyanba",
+    "language": "Rukiga",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nyanba",
+    "output": "help",
+    "language": "Rukiga",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "i love you",
+    "output": "Ninkukunda",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ninkukunda",
+    "output": "i love you",
+    "language": "Rukiga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "thank you",
+    "output": "Apwoyo matek",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Apwoyo matek",
+    "output": "thank you",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "thanks",
+    "output": "Apwoyo",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Apwoyo",
+    "output": "thanks",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "good morning",
+    "output": "Itye nino",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Itye nino",
+    "output": "good morning",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "good afternoon",
+    "output": "Itye nino",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Itye nino",
+    "output": "good afternoon",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "welcome",
+    "output": "Yin kare",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Yin kare",
+    "output": "welcome",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "hello",
+    "output": "Yin kare",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Yin kare",
+    "output": "hello",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "goodbye",
+    "output": "Obedo maber",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Obedo maber",
+    "output": "goodbye",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "bye",
+    "output": "Obedo maber",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Obedo maber",
+    "output": "bye",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "open the door",
+    "output": "Yab dog",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Yab dog",
+    "output": "open the door",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "how are you",
+    "output": "Itye nino",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Itye nino",
+    "output": "how are you",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "i am fine",
+    "output": "Atye maber",
+    "language": "Acholi",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Atye maber",
+    "output": "i am fine",
+    "language": "Acholi",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "what is your name",
+    "output": "Nyingi ngweni",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nyingi ngweni",
+    "output": "what is your name",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "my name is",
+    "output": "Nyinga ngwen",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nyinga ngwen",
+    "output": "my name is",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "yes",
+    "output": "Ee",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ee",
+    "output": "yes",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "no",
+    "output": "Pe",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Pe",
+    "output": "no",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "please",
+    "output": "Apwoyo",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Apwoyo",
+    "output": "please",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "sorry",
+    "output": "Tim kica",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Tim kica",
+    "output": "sorry",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "help",
+    "output": "Konya",
+    "language": "Acholi",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Konya",
+    "output": "help",
+    "language": "Acholi",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "i love you",
+    "output": "Amaro ni",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Amaro ni",
+    "output": "i love you",
+    "language": "Acholi",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "thank you",
+    "output": "Webale",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Webale",
+    "output": "thank you",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "good morning",
+    "output": "Mirembe",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Mirembe",
+    "output": "good morning",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "good afternoon",
+    "output": "Osiibye otya",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Osiibye otya",
+    "output": "good afternoon",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "welcome",
+    "output": "Tukusanyukidde",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Tukusanyukidde",
+    "output": "welcome",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "hello",
+    "output": "Kale",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Kale",
+    "output": "hello",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "goodbye",
+    "output": "Weeraba",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Weeraba",
+    "output": "goodbye",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "bye",
+    "output": "Weeraba",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Weeraba",
+    "output": "bye",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "open the door",
+    "output": "Ggulawo oluggi",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ggulawo oluggi",
+    "output": "open the door",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "how are you",
+    "output": "Oli otya",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Oli otya",
+    "output": "how are you",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "i am fine",
+    "output": "Ndi bulungi",
+    "language": "Lusoga",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ndi bulungi",
+    "output": "i am fine",
+    "language": "Lusoga",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "what is your name",
+    "output": "Erinnya lyo ani",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Erinnya lyo ani",
+    "output": "what is your name",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "my name is",
+    "output": "Erinnya lyange",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Erinnya lyange",
+    "output": "my name is",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "yes",
+    "output": "Yee",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Yee",
+    "output": "yes",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "no",
+    "output": "Nedda",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nedda",
+    "output": "no",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "please",
+    "output": "Mwebale",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Mwebale",
+    "output": "please",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "sorry",
+    "output": "Nsonyiwa",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nsonyiwa",
+    "output": "sorry",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "help",
+    "output": "Nnyamba",
+    "language": "Lusoga",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nnyamba",
+    "output": "help",
+    "language": "Lusoga",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "i love you",
+    "output": "Nkwagala",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nkwagala",
+    "output": "i love you",
+    "language": "Lusoga",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "thank you",
+    "output": "Webale",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Webale",
+    "output": "thank you",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "good morning",
+    "output": "Oraare gye",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Oraare gye",
+    "output": "good morning",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "good afternoon",
+    "output": "Osiibye gye",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Osiibye gye",
+    "output": "good afternoon",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "welcome",
+    "output": "Tusiime",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Tusiime",
+    "output": "welcome",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "hello",
+    "output": "Agandi",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Agandi",
+    "output": "hello",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "goodbye",
+    "output": "Nimwe",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nimwe",
+    "output": "goodbye",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "bye",
+    "output": "Nimwe",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nimwe",
+    "output": "bye",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "open the door",
+    "output": "Gura omuryango",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Gura omuryango",
+    "output": "open the door",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "how are you",
+    "output": "Oraare gye",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Oraare gye",
+    "output": "how are you",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "i am fine",
+    "output": "Ndi mwe",
+    "language": "Runyankole",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ndi mwe",
+    "output": "i am fine",
+    "language": "Runyankole",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "what is your name",
+    "output": "Ishwa ryawe niiwe",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ishwa ryawe niiwe",
+    "output": "what is your name",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "my name is",
+    "output": "Ishwa ryange nii",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ishwa ryange nii",
+    "output": "my name is",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "yes",
+    "output": "Nee",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nee",
+    "output": "yes",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "no",
+    "output": "Ngangi",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ngangi",
+    "output": "no",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "please",
+    "output": "Mwebale",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Mwebale",
+    "output": "please",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "sorry",
+    "output": "Nsonsiwe",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nsonsiwe",
+    "output": "sorry",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "help",
+    "output": "Nyanba",
+    "language": "Runyankole",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nyanba",
+    "output": "help",
+    "language": "Runyankole",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "i love you",
+    "output": "Ninkukunda",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ninkukunda",
+    "output": "i love you",
+    "language": "Runyankole",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "thank you",
+    "output": "Eyalama",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Eyalama",
+    "output": "thank you",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "good morning",
+    "output": "Itokei",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Itokei",
+    "output": "good morning",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "good afternoon",
+    "output": "Aitokei",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Aitokei",
+    "output": "good afternoon",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "welcome",
+    "output": "Kale",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Kale",
+    "output": "welcome",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "hello",
+    "output": "Ayo",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ayo",
+    "output": "hello",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "goodbye",
+    "output": "Nayai",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nayai",
+    "output": "goodbye",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "bye",
+    "output": "Nayai",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Nayai",
+    "output": "bye",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "open the door",
+    "output": "Lok doi",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Lok doi",
+    "output": "open the door",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "how are you",
+    "output": "Itokei",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Itokei",
+    "output": "how are you",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "i am fine",
+    "output": "Ito nai",
+    "language": "Ateso",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ito nai",
+    "output": "i am fine",
+    "language": "Ateso",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "what is your name",
+    "output": "Eong nike",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Eong nike",
+    "output": "what is your name",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "my name is",
+    "output": "Eong nia",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Eong nia",
+    "output": "my name is",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "yes",
+    "output": "Ee",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ee",
+    "output": "yes",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "no",
+    "output": "Mam",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Mam",
+    "output": "no",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "please",
+    "output": "Eyalama",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Eyalama",
+    "output": "please",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "sorry",
+    "output": "Naya",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Naya",
+    "output": "sorry",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "help",
+    "output": "Konya",
+    "language": "Ateso",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Konya",
+    "output": "help",
+    "language": "Ateso",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "i love you",
+    "output": "Eong amaritai",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Eong amaritai",
+    "output": "i love you",
+    "language": "Ateso",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "thank you",
+    "output": "Mvolo",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Mvolo",
+    "output": "thank you",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "good morning",
+    "output": "Molo",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Molo",
+    "output": "good morning",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "good afternoon",
+    "output": "Molo",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Molo",
+    "output": "good afternoon",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "welcome",
+    "output": "Wuruke",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Wuruke",
+    "output": "welcome",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "hello",
+    "output": "Molo",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Molo",
+    "output": "hello",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "goodbye",
+    "output": "Oru",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Oru",
+    "output": "goodbye",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "bye",
+    "output": "Oru",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Oru",
+    "output": "bye",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "open the door",
+    "output": "Ru yi",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ru yi",
+    "output": "open the door",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "how are you",
+    "output": "Molo",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Molo",
+    "output": "how are you",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "i am fine",
+    "output": "Molo nza",
+    "language": "Lugbara",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Molo nza",
+    "output": "i am fine",
+    "language": "Lugbara",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "what is your name",
+    "output": "Ingo ni",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ingo ni",
+    "output": "what is your name",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "my name is",
+    "output": "Ingo na",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ingo na",
+    "output": "my name is",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "yes",
+    "output": "Ee",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ee",
+    "output": "yes",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "no",
+    "output": "Awa",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Awa",
+    "output": "no",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "please",
+    "output": "Mvolo",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "Mvolo",
+    "output": "please",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Formal"
+  },
+  {
+    "input": "sorry",
+    "output": "Mvolo",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Mvolo",
+    "output": "sorry",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "help",
+    "output": "Konya",
+    "language": "Lugbara",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "Konya",
+    "output": "help",
+    "language": "Lugbara",
+    "domain": "Health",
+    "formality": "Informal"
+  },
+  {
+    "input": "i love you",
+    "output": "Ma ti",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  },
+  {
+    "input": "Ma ti",
+    "output": "i love you",
+    "language": "Lugbara",
+    "domain": "Daily Conversation",
+    "formality": "Informal"
+  }
+]

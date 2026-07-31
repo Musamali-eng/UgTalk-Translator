@@ -47,9 +47,7 @@ def models_page():
 def guide():
     return render_template('guide.html')
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+
 
 # Prediction API
 @app.route('/predict', methods=['POST'])
@@ -189,38 +187,7 @@ def api_translate():
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
-# Dashboard
-@app.route('/dashboard')
-def dashboard():
-    lang_dist = {
-        'Luganda': 13, 
-        'Lusoga': 12, 
-        'Runyankole': 12, 
-        'Acholi': 12, 
-        'Ateso': 12, 
-        'Lugbara': 12, 
-        'Rukiga': 12
-    }
 
-    domain_dist = {
-        'Daily Conversation': 30, 
-        'Health': 15, 
-        'Tourism': 12,
-        'Education': 10, 
-        'Business': 8, 
-        'Agriculture': 5, 
-        'Government': 5
-    }
-    
-    formality_dist = {'Informal': 55, 'Formal': 30}
-
-    return render_template('dashboard.html',
-                         lang_dist=lang_dist,
-                         domain_dist=domain_dist,
-                         formality_dist=formality_dist,
-                         total_records=sum(lang_dist.values()),
-                         total_languages=len(LANGUAGES),
-                         total_domains=len(DOMAINS))
 
 # History routes
 @app.route('/history')
@@ -335,7 +302,7 @@ if __name__ == '__main__':
     os.makedirs('docs', exist_ok=True)
     
     print("=" * 60)
-    print("AI-Powered Web Service")
+    print("🌟 VisionLens AI - UgTalk Translator 🌟")
     print("Group C - RECESS Final Project 2026")
     print("=" * 60)
     print(f"Languages: {len(LANGUAGES)}")
